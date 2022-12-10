@@ -2,24 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class VerifyEmail extends StatefulWidget {
-  const VerifyEmail({super.key});
+class VerifyPhoneCode extends StatefulWidget {
+  const VerifyPhoneCode({super.key});
 
   @override
-  State<VerifyEmail> createState() => _VerifyEmailState();
+  State<VerifyPhoneCode> createState() => _VerifyPhoneCodeState();
 }
 
-class _VerifyEmailState extends State<VerifyEmail> {
+class _VerifyPhoneCodeState extends State<VerifyPhoneCode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: BackButton(
-          color: Colors.black,
-          onPressed: () => {},
-        ),
         actions: [
           IconButton(
             onPressed: () => {},
@@ -37,7 +33,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              "Verify your email",
+              "Enter the code",
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
             ),
             SizedBox(

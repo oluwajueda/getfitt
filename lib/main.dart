@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getfitts/screens/GetNotification.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/SignUp.dart';
+import 'package:getfitts/screens/VerifyEmail.dart';
+import 'package:getfitts/screens/VerifyPhone.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,6 +21,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SignUp();
+    return GetNotification();
   }
 }
