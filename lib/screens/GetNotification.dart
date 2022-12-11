@@ -125,7 +125,27 @@ class _GetNotificationState extends State<GetNotification> {
                   )
                 ])
               ],
-            )
+            ),
+            SizedBox(
+              height: 200,
+            ),
+            SizedBox(
+              width: 350,
+              height: 45,
+              child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromRGBO(215, 60, 16, 1)),
+                  child: Text(
+                    "Enable Notification",
+                    style: TextStyle(color: Colors.white),
+                  )),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Center(child: Text("Later"))
           ],
         ),
       ),

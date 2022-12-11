@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getfitts/screens/GetNotification.dart';
+import 'package:getfitts/screens/Information.dart';
 import 'package:getfitts/screens/LandingPage.dart';
+import 'package:getfitts/screens/Login.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/screens/VerifyEmail.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
@@ -21,6 +23,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetNotification();
+    return Login();
   }
 }

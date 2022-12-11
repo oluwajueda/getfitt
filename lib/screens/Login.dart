@@ -1,15 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,25 +35,32 @@ class _SignUpState extends State<SignUp> {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(24, 8, 8, 8),
                             child: Text(
-                              "Create Account",
+                              "Login",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 32),
                             ),
                           ))),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                       child: Align(
                           alignment: Alignment.topLeft,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(24, 8, 8, 6),
                             child: Text(
-                              "First name",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              "Enter your email",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14),
                             ),
                           ))),
                   SizedBox(
                     width: 350,
                     height: 45,
                     child: TextFormField(
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           filled: true,
@@ -73,14 +81,18 @@ class _SignUpState extends State<SignUp> {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(24, 8, 8, 6),
                             child: Text(
-                              "Last name",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              "Enter your password",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14),
                             ),
                           ))),
                   SizedBox(
                     width: 350,
                     height: 45,
                     child: TextFormField(
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      obscureText: true,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           filled: true,
@@ -93,63 +105,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                      child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(24, 8, 8, 6),
-                            child: Text(
-                              "Email",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ))),
-                  SizedBox(
-                    width: 350,
-                    height: 45,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          filled: true,
-                          fillColor: Color.fromRGBO(245, 245, 245, 1),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(color: Colors.transparent)),
-                          labelStyle: TextStyle(fontSize: 13)),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                      child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(24, 8, 8, 6),
-                            child: Text(
-                              "Password",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ))),
-                  SizedBox(
-                    width: 350,
-                    height: 45,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          filled: true,
-                          fillColor: Color.fromRGBO(245, 245, 245, 1),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(color: Colors.transparent)),
-                          labelStyle: TextStyle(fontSize: 13)),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 150,
+                    height: 350,
                   ),
                   SizedBox(
                     width: 350,
@@ -160,7 +116,7 @@ class _SignUpState extends State<SignUp> {
                             borderRadius: BorderRadius.circular(10),
                             color: Color.fromRGBO(215, 60, 16, 1)),
                         child: Text(
-                          "Create Account",
+                          "Login",
                           style: TextStyle(color: Colors.white),
                         )),
                   ),
@@ -170,7 +126,7 @@ class _SignUpState extends State<SignUp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('have an account?',
+                      Text("Don't have an account?",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -178,7 +134,7 @@ class _SignUpState extends State<SignUp> {
                       SizedBox(
                         width: 2,
                       ),
-                      Text('Sign Up',
+                      Text('Sign In',
                           style: TextStyle(
                               color: Color.fromRGBO(74, 193, 186, 1),
                               fontSize: 14,
