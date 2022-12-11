@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/SignUp.dart';
 import 'package:intl/intl.dart';
 
 class Information extends StatefulWidget {
@@ -28,7 +29,10 @@ class _InformationState extends State<Information> {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => SignUp()))
+            },
             icon: Icon(
               Icons.close,
               color: Colors.black,

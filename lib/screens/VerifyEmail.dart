@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/SignUp.dart';
+import 'package:getfitts/screens/VerifyPhone.dart';
 
 class VerifyEmail extends StatefulWidget {
   const VerifyEmail({super.key});
@@ -18,11 +20,17 @@ class _VerifyEmailState extends State<VerifyEmail> {
         elevation: 0,
         leading: BackButton(
           color: Colors.black,
-          onPressed: () => {},
+          onPressed: () => {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SignUp()))
+          },
         ),
         actions: [
           IconButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => SignUp()))
+            },
             icon: Icon(
               Icons.close,
               color: Colors.black,
@@ -78,7 +86,31 @@ class _VerifyEmailState extends State<VerifyEmail> {
               padding: const EdgeInsets.only(right: 90),
               child: Text(
                   "Don't get the mail? Check your spam/junk or just resend it"),
-            )
+            ),
+            SizedBox(
+              height: 400,
+            ),
+            SizedBox(
+              width: 350,
+              height: 45,
+              child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromRGBO(215, 60, 16, 1)),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VerifyPhone()));
+                    },
+                    child: Text(
+                      "Proceed",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )),
+            ),
           ],
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/VerifyEmail.dart';
+import 'package:getfitts/screens/VerifyPhoneCode.dart';
 
 class VerifyPhone extends StatefulWidget {
   const VerifyPhone({super.key});
@@ -18,7 +20,10 @@ class _VerifyPhoneState extends State<VerifyPhone> {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => VerifyEmail()))
+            },
             icon: Icon(
               Icons.close,
               color: Colors.black,
@@ -74,7 +79,31 @@ class _VerifyPhoneState extends State<VerifyPhone> {
               padding: const EdgeInsets.only(right: 90),
               child: Text(
                   "Don't get the mail? Check your spam/junk or just resend it"),
-            )
+            ),
+            SizedBox(
+              height: 350,
+            ),
+            SizedBox(
+              width: 350,
+              height: 45,
+              child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromRGBO(215, 60, 16, 1)),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VerifyPhoneCode()));
+                    },
+                    child: Text(
+                      "Proceed",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )),
+            ),
           ],
         ),
       ),

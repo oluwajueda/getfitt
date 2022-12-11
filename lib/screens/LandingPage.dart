@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/utils/custom_theme.dart';
 
 class LandingPage extends StatefulWidget {
@@ -15,14 +16,18 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/getfit_background_image.png"),
+                image: AssetImage(
+                  "assets/images/getfit_background_image.png",
+                ),
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.2), BlendMode.darken),
                 fit: BoxFit.cover)),
         child: Column(
           children: [
             SizedBox(
-              height: 38,
+              height: 58,
             ),
             Text("getfitt.",
                 style: TextStyle(
@@ -56,7 +61,9 @@ class _LandingPageState extends State<LandingPage> {
                     color: Color.fromRGBO(245, 245, 245, 1)),
                 child: Text(
                   "Sign up with google",
-                  style: TextStyle(color: Color.fromRGBO(0, 0, 0, 1)),
+                  style: TextStyle(
+                      color: Color.fromRGBO(0, 0, 0, 1),
+                      fontWeight: FontWeight.w500),
                 )),
             SizedBox(
               height: 16,
@@ -68,9 +75,15 @@ class _LandingPageState extends State<LandingPage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Color.fromRGBO(215, 60, 16, 1)),
-                child: Text(
-                  "Create Account",
-                  style: TextStyle(color: Colors.white),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUp()));
+                  },
+                  child: Text(
+                    "Create Account",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 )),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/SignUp.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -134,11 +135,19 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         width: 2,
                       ),
-                      Text('Sign In',
-                          style: TextStyle(
-                              color: Color.fromRGBO(74, 193, 186, 1),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500))
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUp()));
+                        },
+                        child: Text('Sign Up',
+                            style: TextStyle(
+                                color: Color.fromRGBO(74, 193, 186, 1),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500)),
+                      )
                     ],
                   )
                 ],

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/LandingPage.dart';
+import 'package:getfitts/screens/Login.dart';
+import 'package:getfitts/screens/VerifyEmail.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -16,7 +19,10 @@ class _SignUpState extends State<SignUp> {
       appBar:
           AppBar(backgroundColor: Colors.transparent, elevation: 0, actions: [
         IconButton(
-            onPressed: () => {},
+            onPressed: () => {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LandingPage()))
+                },
             icon: Icon(
               Icons.close,
               color: Colors.black,
@@ -149,7 +155,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   SizedBox(
-                    height: 150,
+                    height: 200,
                   ),
                   SizedBox(
                     width: 350,
@@ -159,9 +165,17 @@ class _SignUpState extends State<SignUp> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Color.fromRGBO(215, 60, 16, 1)),
-                        child: Text(
-                          "Create Account",
-                          style: TextStyle(color: Colors.white),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => VerifyEmail()));
+                          },
+                          child: Text(
+                            "Create Account",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         )),
                   ),
                   SizedBox(
@@ -178,11 +192,17 @@ class _SignUpState extends State<SignUp> {
                       SizedBox(
                         width: 2,
                       ),
-                      Text('Sign Up',
-                          style: TextStyle(
-                              color: Color.fromRGBO(74, 193, 186, 1),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500))
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Login()));
+                        },
+                        child: Text('Login In',
+                            style: TextStyle(
+                                color: Color.fromRGBO(74, 193, 186, 1),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500)),
+                      )
                     ],
                   )
                 ],

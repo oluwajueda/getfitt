@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/Information.dart';
+import 'package:getfitts/screens/Login.dart';
 
 class GetNotification extends StatefulWidget {
   const GetNotification({super.key});
@@ -18,7 +20,10 @@ class _GetNotificationState extends State<GetNotification> {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()))
+            },
             icon: Icon(
               Icons.close,
               color: Colors.black,
@@ -127,7 +132,7 @@ class _GetNotificationState extends State<GetNotification> {
               ],
             ),
             SizedBox(
-              height: 200,
+              height: 250,
             ),
             SizedBox(
               width: 350,
@@ -137,9 +142,17 @@ class _GetNotificationState extends State<GetNotification> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Color.fromRGBO(215, 60, 16, 1)),
-                  child: Text(
-                    "Enable Notification",
-                    style: TextStyle(color: Colors.white),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Information()));
+                    },
+                    child: Text(
+                      "Enable Notification",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   )),
             ),
             SizedBox(
