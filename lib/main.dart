@@ -7,8 +7,13 @@ import 'package:getfitts/screens/Login.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/screens/VerifyEmail.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(MaterialApp(
     title: 'Getfitts',
     debugShowCheckedModeBanner: false,

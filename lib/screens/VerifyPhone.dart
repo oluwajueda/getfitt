@@ -64,6 +64,8 @@ class _VerifyPhoneState extends State<VerifyPhone> {
               height: 45,
               child: TextFormField(
                 decoration: InputDecoration(
+                    hintText: 'e.g 070 000 000 000',
+                    hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                     filled: true,
                     fillColor: Color.fromRGBO(245, 245, 245, 1),
                     enabledBorder: OutlineInputBorder(

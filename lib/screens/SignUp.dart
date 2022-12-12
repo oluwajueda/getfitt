@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -16,18 +18,29 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(backgroundColor: Colors.transparent, elevation: 0, actions: [
-        IconButton(
+      appBar: AppBar(
+          leading: BackButton(
+            color: Colors.black,
             onPressed: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LandingPage()))
-                },
-            icon: Icon(
-              Icons.close,
-              color: Colors.black,
-            ))
-      ]),
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => SignUp()))
+            },
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: [
+            IconButton(
+                onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LandingPage()))
+                    },
+                icon: Icon(
+                  Icons.close,
+                  color: Colors.black,
+                ))
+          ]),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -61,6 +74,9 @@ class _SignUpState extends State<SignUp> {
                     child: TextFormField(
                       decoration: InputDecoration(
                           border: InputBorder.none,
+                          hintText: 'e.g John',
+                          hintStyle:
+                              TextStyle(fontSize: 14, color: Colors.grey),
                           filled: true,
                           fillColor: Color.fromRGBO(245, 245, 245, 1),
                           enabledBorder: OutlineInputBorder(
@@ -89,6 +105,9 @@ class _SignUpState extends State<SignUp> {
                     child: TextFormField(
                       decoration: InputDecoration(
                           border: InputBorder.none,
+                          hintText: 'e.g Doe',
+                          hintStyle:
+                              TextStyle(fontSize: 14, color: Colors.grey),
                           filled: true,
                           fillColor: Color.fromRGBO(245, 245, 245, 1),
                           enabledBorder: OutlineInputBorder(
@@ -115,8 +134,12 @@ class _SignUpState extends State<SignUp> {
                     width: 350,
                     height: 45,
                     child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: InputBorder.none,
+                          hintText: 'e.g johndoe@gmail.com',
+                          hintStyle:
+                              TextStyle(fontSize: 14, color: Colors.grey),
                           filled: true,
                           fillColor: Color.fromRGBO(245, 245, 245, 1),
                           enabledBorder: OutlineInputBorder(
@@ -143,6 +166,9 @@ class _SignUpState extends State<SignUp> {
                     width: 350,
                     height: 45,
                     child: TextFormField(
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           filled: true,
