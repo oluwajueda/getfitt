@@ -15,6 +15,26 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  late final TextEditingController _email;
+  late final TextEditingController _password;
+  late final TextEditingController _firstName;
+  late final TextEditingController _lastName;
+
+  @override
+  void initState() {
+    _email = TextEditingController();
+    _password = TextEditingController();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _password.dispose();
+  }
+
+  bool _loadingButton = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +92,7 @@ class _SignUpState extends State<SignUp> {
                     width: 350,
                     height: 45,
                     child: TextFormField(
+                      controller: _firstName,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'e.g John',
@@ -103,6 +124,7 @@ class _SignUpState extends State<SignUp> {
                     width: 350,
                     height: 45,
                     child: TextFormField(
+                      controller: _lastName,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'e.g Doe',
