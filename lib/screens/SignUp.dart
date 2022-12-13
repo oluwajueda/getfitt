@@ -156,6 +156,7 @@ class _SignUpState extends State<SignUp> {
                     width: 350,
                     height: 45,
                     child: TextFormField(
+                      controller: _email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -188,6 +189,7 @@ class _SignUpState extends State<SignUp> {
                     width: 350,
                     height: 45,
                     child: TextFormField(
+                      controller: _password,
                       obscureText: true,
                       enableSuggestions: false,
                       autocorrect: false,
