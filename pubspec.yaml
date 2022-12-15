@@ -36,6 +36,7 @@ dependencies:
   firebase_core: ^2.4.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.1
   intl: ^0.17.0
 
 int:
@@ -47,6 +48,7 @@ firebase_auth: ^4.0.2
 firebase_core: ^1.20.1
 cloud_firestore: ^3.4.4
 firebase_analytics: ^9.3.1
+provider: ^6.0.4
 test: ^1.21.1
 sqflite: ^2.0.3+1
 path_provider: ^2.0.11

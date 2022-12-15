@@ -3,15 +3,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:getfitts/firebase_options.dart';
 import 'package:getfitts/service/auth/auth_exceptions.dart';
 import 'package:getfitts/service/auth/auth_user.dart';
-import 'package:getfitts/service/auth_provider.dart';
+import 'package:getfitts/service/auth/auth_provider.dart';
 
 class FirebaseAuthProvider implements AuthProvider {
   @override
-  Future<AuthUser> createUser(
-      {required String email,
-      required String password,
-      required String firstName,
-      required String lastName}) async {
+  Future<AuthUser> createUser({
+    required String email,
+    required String password,
+    // required String firstName,
+    // required String lastName
+  }) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,

@@ -1,11 +1,19 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/Login.dart';
 import 'package:getfitts/screens/VerifyEmail.dart';
+import 'package:getfitts/service/auth/auth_exceptions.dart';
+import 'package:getfitts/service/auth/bloc/auth_event.dart';
+import 'package:getfitts/service/auth/bloc/auth_state.dart';
+
+import '../service/auth/bloc/auth_bloc.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -32,6 +40,8 @@ class _SignUpState extends State<SignUp> {
   void dispose() {
     _email.dispose();
     _password.dispose();
+
+    super.dispose();
   }
 
   bool _loadingButton = false;
@@ -217,10 +227,12 @@ class _SignUpState extends State<SignUp> {
                             color: Color.fromRGBO(215, 60, 16, 1)),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => VerifyEmail()));
+                            final email = _email.text;
+                            final password = _password.text;
+
+                            context
+                                .read<AuthBloc>()
+                                .add(AuthEventRegister(email, password));
                           },
                           child: Text(
                             "Create Account",

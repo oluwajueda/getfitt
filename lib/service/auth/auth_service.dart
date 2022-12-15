@@ -1,6 +1,6 @@
 import 'package:getfitts/service/auth/auth_user.dart';
 import 'package:getfitts/service/auth/firebase_auth_provider.dart';
-import 'package:getfitts/service/auth_provider.dart';
+import 'package:getfitts/service/auth/auth_provider.dart';
 
 class AuthService implements AuthProvider {
   final AuthProvider provider;
@@ -11,19 +11,18 @@ class AuthService implements AuthProvider {
       );
 
   @override
-  Future<AuthUser> createUser(
-          {required String email,
-          required String password,
-          required String firstName,
-          required String lastName}) =>
-      provider.createUser(
-          email: email,
-          password: password,
-          firstName: firstName,
-          lastName: lastName);
+  Future<AuthUser> createUser({
+    required String email,
+    required String password,
+    // required String firstName,
+    // required String lastName
+  }) =>
+      provider.createUser(email: email, password: password
+          // firstName: firstName,
+          // lastName: lastName);
+          );
 
   @override
-  // TODO: implement currentUser
   AuthUser? get currentUser => provider.currentUser;
 
   @override

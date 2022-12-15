@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:getfitts/service/auth/bloc/auth_event.dart';
 import 'package:getfitts/service/auth/bloc/auth_state.dart';
-import 'package:getfitts/service/auth_provider.dart';
+import 'package:getfitts/service/auth/auth_provider.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(AuthProvider provider)
@@ -14,15 +14,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEventRegister>((event, emit) async {
       final email = event.email;
       final password = event.password;
-      final firstName = event.firstName;
-      final lastName = event.lastName;
+      // final firstName = event.firstName;
+      // final lastName = event.lastName;
 
       try {
         await provider.createUser(
-            email: email,
-            password: password,
-            firstName: firstName,
-            lastName: lastName);
+          email: email,
+          password: password,
+          // firstName: firstName,
+          // lastName: lastName;
+        );
 
         await provider.sendEmailVerification();
         emit(const AuthStateNeedsVerification(isLoading: false));

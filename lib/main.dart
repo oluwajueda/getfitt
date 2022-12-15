@@ -8,17 +8,40 @@ import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/screens/VerifyEmail.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:getfitts/utils/application_state.dart';
 import 'firebase_options.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(MaterialApp(
-    title: 'Getfitts',
-    debugShowCheckedModeBanner: false,
-    home: MyApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ApplicationState(),
+      builder: (context, _) => Consumer<ApplicationState>(
+        builder: (context, applicationState, _) {
+          Widget child;
+          switch (applicationState.loginState) {
+            case ApplicationLoginState.loggedOut:
+              child = Login();
+
+              break;
+            case ApplicationLoginState.loggedIn:
+              child = MyApp();
+              break;
+
+            default:
+              child = Login();
+          }
+
+          return MaterialApp(
+            home: child,
+          );
+        },
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
