@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,8 +15,11 @@ class Information extends StatefulWidget {
 
 class _InformationState extends State<Information> {
   TextEditingController dateInputController = TextEditingController();
-  String selectedValue = "Yes";
+  String firstDropdownValue = "No";
+  String secondDropdownValue = "Yes";
 
+  String firstDrop = "No";
+  String secondDrop = "Yes";
   @override
   void initState() {
     dateInputController.text = "";
@@ -51,12 +56,12 @@ class _InformationState extends State<Information> {
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             Text(
                 'kindly answer the following questions to get exercises more tailored to you.'),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             Text(
               'Date of birth',
@@ -103,26 +108,82 @@ class _InformationState extends State<Information> {
             SizedBox(
               height: 5,
             ),
-            SizedBox(
-              width: 350,
-              height: 45,
-              child: DecoratedBox(
-                decoration: ShapeDecoration(
-                    color: Color.fromRGBO(245, 245, 245, 1),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)))),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton(
-                    value: selectedValue,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedValue = newValue!;
-                      });
-                    },
-                    items: dropdownItems,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 350,
+                  height: 45,
+                  child: DecoratedBox(
+                    decoration: ShapeDecoration(
+                        color: Color.fromRGBO(245, 245, 245, 1),
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10)))),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          value: firstDropdownValue,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              firstDropdownValue = newValue!;
+                            });
+                          },
+                          items: <String>['No', 'Yes']
+                              .map<DropdownMenuItem<String>>((String doaValue) {
+                            return DropdownMenuItem(
+                                value: doaValue, child: Text(doaValue));
+                          }).toList()),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(
+                  height: 15,
+                ),
+                firstDropdownValue == 'No'
+                    ? SizedBox()
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Is your diabetics controlled',
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(
+                            width: 350,
+                            height: 45,
+                            child: DecoratedBox(
+                              decoration: ShapeDecoration(
+                                  color: Color.fromRGBO(245, 245, 245, 1),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)))),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                    value: firstDropdownValue,
+                                    onChanged: (String? newValue) {
+                                      setState(() {
+                                        secondDropdownValue = newValue!;
+                                      });
+                                    },
+                                    items: <String>['No', 'Yes']
+                                        .map<DropdownMenuItem<String>>(
+                                            (String doaValue) {
+                                      return DropdownMenuItem(
+                                          value: doaValue,
+                                          child: Text(doaValue));
+                                    }).toList()),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                SizedBox(
+                  height: 5,
+                ),
+              ],
             ),
             SizedBox(
               height: 15,
@@ -134,67 +195,90 @@ class _InformationState extends State<Information> {
             SizedBox(
               height: 5,
             ),
-            SizedBox(
-              width: 350,
-              height: 45,
-              child: DecoratedBox(
-                decoration: ShapeDecoration(
-                    color: Color.fromRGBO(245, 245, 245, 1),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)))),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton(
-                    value: selectedValue,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedValue = newValue!;
-                      });
-                    },
-                    items: dropdownItems,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 350,
+                  height: 45,
+                  child: DecoratedBox(
+                    decoration: ShapeDecoration(
+                        color: Color.fromRGBO(245, 245, 245, 1),
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10)))),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                          value: firstDrop,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              firstDrop = newValue!;
+                            });
+                          },
+                          items: <String>['No', 'Yes']
+                              .map<DropdownMenuItem<String>>((String doaValue) {
+                            return DropdownMenuItem(
+                                value: doaValue, child: Text(doaValue));
+                          }).toList()),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              'Is your hypertension controlled?',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 350,
-              height: 45,
-              child: DecoratedBox(
-                decoration: ShapeDecoration(
-                    color: Color.fromRGBO(245, 245, 245, 1),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)))),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton(
-                    value: selectedValue,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedValue = newValue!;
-                      });
-                    },
-                    items: dropdownItems,
-                  ),
+                SizedBox(
+                  height: 15,
                 ),
-              ),
+                firstDrop == "No"
+                    ? SizedBox()
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Is your hypertensive controlled',
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(
+                            width: 350,
+                            height: 45,
+                            child: DecoratedBox(
+                              decoration: ShapeDecoration(
+                                  color: Color.fromRGBO(245, 245, 245, 1),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)))),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                    value: firstDropdownValue,
+                                    onChanged: (String? newValue) {
+                                      setState(() {
+                                        firstDropdownValue = newValue!;
+                                      });
+                                    },
+                                    items: <String>['No', 'Yes']
+                                        .map<DropdownMenuItem<String>>(
+                                            (String doaValue) {
+                                      return DropdownMenuItem(
+                                          value: doaValue,
+                                          child: Text(doaValue));
+                                    }).toList()),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            'It is controlled if you are on medications',
+                            style: TextStyle(
+                                color: Color.fromRGBO(153, 153, 153, 1)),
+                          ),
+                        ],
+                      )
+              ],
             ),
             SizedBox(
-              height: 5,
-            ),
-            Text(
-              'It is controlled if you are on medications',
-              style: TextStyle(color: Color.fromRGBO(153, 153, 153, 1)),
-            ),
-            SizedBox(
-              height: 150,
+              height: 100,
             ),
             SizedBox(
               width: 350,

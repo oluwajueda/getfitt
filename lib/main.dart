@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getfitts/screens/GetNotification.dart';
@@ -32,7 +34,7 @@ void main() async {
               break;
 
             default:
-              child = Login();
+              child = LandingPage();
           }
 
           return MaterialApp(
@@ -51,6 +53,55 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LandingPage();
+    return DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            centerTitle: false,
+            title: Text(
+              'Home',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32),
+            ),
+          ),
+          bottomNavigationBar: Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            child: TabBar(indicatorColor: Colors.transparent,
+                // ignore: prefer_const_literals_to_create_immutables
+                tabs: [
+                  Tab(
+                    icon: Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
+                  ),
+                ]),
+          ),
+        ));
   }
 }

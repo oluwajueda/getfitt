@@ -1,19 +1,17 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:ui';
-
+// ignore_for_file: prefer_const_constructorsimport 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:getfitts/screens/Information.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/Login.dart';
 import 'package:getfitts/screens/VerifyEmail.dart';
-import 'package:getfitts/service/auth/auth_exceptions.dart';
-import 'package:getfitts/service/auth/bloc/auth_event.dart';
-import 'package:getfitts/service/auth/bloc/auth_state.dart';
-
-import '../service/auth/bloc/auth_bloc.dart';
+import 'package:getfitts/utils/application_state.dart';
+import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:getfitts/service/FirestoreService.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -32,6 +30,8 @@ class _SignUpState extends State<SignUp> {
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    _firstName = TextEditingController();
+    _lastName = TextEditingController();
 
     super.initState();
   }
@@ -40,11 +40,34 @@ class _SignUpState extends State<SignUp> {
   void dispose() {
     _email.dispose();
     _password.dispose();
+    _firstName.dispose();
+    _lastName.dispose();
 
     super.dispose();
   }
 
-  bool _loadingButton = false;
+  signUp() async {
+    try {
+      var authResult = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: _email.text, password: _password.text);
+
+      FirebaseFirestore.instance
+          .collection("users")
+          .doc(authResult.user?.uid)
+          .set({
+        "uid": authResult.user?.uid,
+        "first name": _firstName.text,
+        "last name": _lastName.text,
+      });
+
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Information()));
+    } catch (e) {
+      print("error");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -226,14 +249,7 @@ class _SignUpState extends State<SignUp> {
                             borderRadius: BorderRadius.circular(10),
                             color: Color.fromRGBO(215, 60, 16, 1)),
                         child: GestureDetector(
-                          onTap: () {
-                            final email = _email.text;
-                            final password = _password.text;
-
-                            context
-                                .read<AuthBloc>()
-                                .add(AuthEventRegister(email, password));
-                          },
+                          onTap: signUp,
                           child: Text(
                             "Create Account",
                             style: TextStyle(color: Colors.white),
