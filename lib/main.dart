@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getfitts/TimerScreen.dart';
 import 'package:getfitts/screens/GetNotification.dart';
+import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/Information.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/Login.dart';
@@ -102,6 +106,13 @@ class MyApp extends StatelessWidget {
                   ),
                 ]),
           ),
+          // ignore: prefer_const_literals_to_create_immutables
+          body: TabBarView(children: [
+            Home(),
+            Home(),
+            Home(),
+            Home(),
+          ]),
         ));
   }
 }
