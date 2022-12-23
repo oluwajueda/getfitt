@@ -7,6 +7,7 @@ enum ApplicationLoginState { loggedOut, loggedIn }
 
 class ApplicationState extends ChangeNotifier {
   User? user;
+  User? get userNow => user;
   ApplicationLoginState loginState = ApplicationLoginState.loggedOut;
 
   ApplicationState() {
@@ -32,6 +33,15 @@ class ApplicationState extends ChangeNotifier {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
+      FirebaseFirestore.instance
+          .collection("users")
+          .doc(userCredential.user?.uid)
+          .set({
+        "email": userCredential.user?.email,
+        "first name": firstName,
+        "last name": lastName,
+      });
+
       return userCredential.user != null;
     } on FirebaseAuthException catch (e) {
       errorCallBack(e);
@@ -45,6 +55,7 @@ class ApplicationState extends ChangeNotifier {
           .signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       errorCallBack(e);
+      print('error');
     }
   }
 

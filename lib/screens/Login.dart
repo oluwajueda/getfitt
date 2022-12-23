@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/SignUp.dart';
+import 'package:provider/provider.dart';
+import 'package:getfitts/utils/application_state.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,6 +15,33 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  late final TextEditingController _email;
+  late final TextEditingController _password;
+
+  @override
+  void initState() {
+    _email = TextEditingController();
+    _password = TextEditingController();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _password.dispose();
+  }
+
+  login() async {
+    try {
+      ApplicationState applicationState =
+          Provider.of<ApplicationState>(context, listen: false);
+      applicationState.signIn(_email.text, _password.text, (e) {});
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+    } catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,10 +91,12 @@ class _LoginState extends State<Login> {
                     child: TextFormField(
                       enableSuggestions: false,
                       autocorrect: false,
+                      controller: _email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           filled: true,
+                          hintText: 'e.g johndoe@gmail.com',
                           fillColor: Color.fromRGBO(245, 245, 245, 1),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -93,6 +125,7 @@ class _LoginState extends State<Login> {
                     child: TextFormField(
                       enableSuggestions: false,
                       autocorrect: false,
+                      controller: _password,
                       obscureText: true,
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -116,9 +149,12 @@ class _LoginState extends State<Login> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Color.fromRGBO(215, 60, 16, 1)),
-                        child: Text(
-                          "Login",
-                          style: TextStyle(color: Colors.white),
+                        child: GestureDetector(
+                          onTap: login,
+                          child: Text(
+                            "Login",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         )),
                   ),
                   SizedBox(

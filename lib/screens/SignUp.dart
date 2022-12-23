@@ -48,18 +48,10 @@ class _SignUpState extends State<SignUp> {
 
   signUp() async {
     try {
-      var authResult = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: _email.text, password: _password.text);
-
-      FirebaseFirestore.instance
-          .collection("users")
-          .doc(authResult.user?.uid)
-          .set({
-        "uid": authResult.user?.uid,
-        "first name": _firstName.text,
-        "last name": _lastName.text,
-      });
+      ApplicationState applicationState =
+          Provider.of<ApplicationState>(context, listen: false);
+      applicationState.signUp(
+          _email.text, _password.text, _firstName.text, _lastName.text, (e) {});
 
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => Information()));

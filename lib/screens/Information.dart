@@ -1,10 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:getfitts/screens/SignUp.dart';
+import 'package:getfitts/utils/application_state.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class Information extends StatefulWidget {
   const Information({super.key});
@@ -16,14 +20,21 @@ class Information extends StatefulWidget {
 class _InformationState extends State<Information> {
   TextEditingController dateInputController = TextEditingController();
   String firstDropdownValue = "No";
-  String secondDropdownValue = "Yes";
+  String secondDropdownValue = "No";
 
   String firstDrop = "No";
-  String secondDrop = "Yes";
+  String secondDrop = "No";
   @override
   void initState() {
-    dateInputController.text = "";
+    dateInputController = TextEditingController();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    dateInputController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -162,7 +173,7 @@ class _InformationState extends State<Information> {
                                           Radius.circular(10)))),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                    value: firstDropdownValue,
+                                    value: secondDropdownValue,
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         secondDropdownValue = newValue!;
@@ -249,10 +260,10 @@ class _InformationState extends State<Information> {
                                           Radius.circular(10)))),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                    value: firstDropdownValue,
+                                    value: secondDrop,
                                     onChanged: (String? newValue) {
                                       setState(() {
-                                        firstDropdownValue = newValue!;
+                                        secondDrop = newValue!;
                                       });
                                     },
                                     items: <String>['No', 'Yes']
@@ -288,9 +299,30 @@ class _InformationState extends State<Information> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Color.fromRGBO(215, 60, 16, 1)),
-                  child: Text(
-                    "Save and Continue",
-                    style: TextStyle(color: Colors.white),
+                  child: GestureDetector(
+                    onTap: () {
+                      final FirebaseAuth auth = FirebaseAuth.instance;
+
+                      final User? user = auth.currentUser;
+
+                      final uid = user?.email;
+
+                      FirebaseFirestore.instance
+                          .collection("vitals")
+                          .doc(uid)
+                          .set({
+                        "email": uid,
+                        "dateOfBirth": dateInputController.text,
+                        "diabetic": firstDropdownValue,
+                        "isDiabeticControlled": secondDropdownValue,
+                        "hypertensive": firstDrop,
+                        "isHypertensionControlled": secondDrop
+                      });
+                    },
+                    child: Text(
+                      "Save and Continue",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   )),
             ),
           ],

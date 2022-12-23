@@ -42,9 +42,7 @@ void main() async {
               child = LandingPage();
           }
 
-          return MaterialApp(
-            home: child,
-          );
+          return MaterialApp(home: Information());
         },
       ),
     ),
@@ -109,7 +107,7 @@ class MyApp extends StatelessWidget {
           ),
           // ignore: prefer_const_literals_to_create_immutables
           body: TabBarView(children: [
-            Vitals(),
+            Information(),
             Home(),
             Home(),
             Home(),
