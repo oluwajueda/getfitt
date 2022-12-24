@@ -3,17 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
 
-class VerifyEmail extends StatefulWidget {
-  const VerifyEmail({super.key});
+class FirstVerifyPhone extends StatefulWidget {
+  const FirstVerifyPhone({super.key});
 
   @override
-  State<VerifyEmail> createState() => _VerifyEmailState();
+  State<FirstVerifyPhone> createState() => _FirstVerifyPhoneState();
 }
 
-class _VerifyEmailState extends State<VerifyEmail> {
+class _FirstVerifyPhoneState extends State<FirstVerifyPhone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +34,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
             ),
             Align(
               child: Text(
-                "Check your inbox",
+                "Phone Verification",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
               ),
@@ -44,7 +43,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
               height: 10,
             ),
             Text(
-              "To complete your account creation, use the link sent to your email",
+              "Kindly verify your phone number to get notified on your exercise schedules",
               textAlign: TextAlign.center,
               style:
                   TextStyle(fontSize: 16, color: Color.fromRGBO(51, 51, 51, 1)),
@@ -52,13 +51,6 @@ class _VerifyEmailState extends State<VerifyEmail> {
             SizedBox(
               height: 10,
             ),
-            Align(
-                alignment: Alignment.center,
-                child: GestureDetector(
-                  child: Text(
-                    "Resend link",
-                  ),
-                )),
             SizedBox(height: 25),
             SizedBox(
               width: 350,
@@ -87,7 +79,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                  "If you don't see our email in your inbox, please check your spam folder"),
+                  "You are almost there! just few steps and you are in already"),
             )
           ],
         ),

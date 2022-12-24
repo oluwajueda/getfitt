@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -69,10 +70,13 @@ class _VerifyPhoneState extends State<VerifyPhone> {
               height: 45,
               child: TextFormField(
                 controller: _passController,
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                     hintText: 'e.g 070 000 000 000',
                     hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
+                    border: InputBorder.none,
                     filled: true,
+                    focusedBorder: InputBorder.none,
                     fillColor: Color.fromRGBO(245, 245, 245, 1),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),

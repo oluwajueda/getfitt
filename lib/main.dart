@@ -14,10 +14,12 @@ import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/screens/VerifyEmail.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:getfitts/screens/VerifyPhoneCode.dart';
 import 'package:getfitts/screens/Vitals.dart';
 import 'package:getfitts/utils/application_state.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
+import 'package:getfitts/screens/FirstVerifyPhone.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,7 +44,10 @@ void main() async {
               child = LandingPage();
           }
 
-          return MaterialApp(home: Information());
+          return MaterialApp(home: VerifyPhone(), routes: {
+            "verify": (context) => VerifyPhoneCode(),
+            "phone": (context) => VerifyPhone()
+          });
         },
       ),
     ),
@@ -107,7 +112,7 @@ class MyApp extends StatelessWidget {
           ),
           // ignore: prefer_const_literals_to_create_immutables
           body: TabBarView(children: [
-            Information(),
+            FirstVerifyPhone(),
             Home(),
             Home(),
             Home(),
