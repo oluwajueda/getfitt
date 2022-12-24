@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,6 +14,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int percent = 0;
+  late Timer timer;
+
+  _startTimer() {
+    timer = Timer.periodic(Duration(milliseconds: 6000), (_) {
+      setState(() {
+        percent += 1;
+
+        if (percent >= 100) {
+          timer.cancel();
+          percent = 100;
+        }
+      });
+    });
+  }
+
   int selectedIndex = 0;
   DateTime now = DateTime.now();
   late DateTime lastDayOfMonth;
@@ -42,15 +58,24 @@ class _HomeState extends State<Home> {
             CircularPercentIndicator(
               radius: 85.0,
               circularStrokeCap: CircularStrokeCap.round,
-              percent: 0.0 / 100,
+              percent: percent / 100,
               animation: true,
               animateFromLastPercent: true,
               lineWidth: 10.0,
               backgroundColor: Color.fromRGBO(245, 245, 245, 1),
               progressColor: Color.fromRGBO(215, 60, 16, 1),
-              center: Text(
-                "75%",
-                style: TextStyle(color: Colors.black, fontSize: 24),
+              center: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "$percent" "%",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text("Completed today")
+                ],
               ),
             ),
             SizedBox(
@@ -59,7 +84,7 @@ class _HomeState extends State<Home> {
             Padding(
               padding: const EdgeInsets.fromLTRB(35, 6, 35, 6),
               child: Text(
-                'You have completed 75% of your exercise today, 25 Monday, Complete now',
+                'You have completed $percent% of your exercise today, 25 Monday, Complete now',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color.fromRGBO(51, 51, 51, 1), fontSize: 16),
@@ -238,9 +263,12 @@ class _HomeState extends State<Home> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
                             color: Color.fromRGBO(215, 60, 16, 1)),
-                        child: Text(
-                          "Start now",
-                          style: TextStyle(color: Colors.white),
+                        child: GestureDetector(
+                          onTap: _startTimer,
+                          child: Text(
+                            "Start now",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ),

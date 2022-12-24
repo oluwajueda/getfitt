@@ -16,6 +16,7 @@ import 'package:getfitts/screens/VerifyPhone.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:getfitts/screens/VerifyPhoneCode.dart';
 import 'package:getfitts/screens/Vitals.dart';
+import 'package:getfitts/screens/VitalsSaved.dart';
 import 'package:getfitts/utils/application_state.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
@@ -41,10 +42,10 @@ void main() async {
               break;
 
             default:
-              child = LandingPage();
+              child = Home();
           }
 
-          return MaterialApp(home: VerifyPhone(), routes: {
+          return MaterialApp(home: Home(), routes: {
             "verify": (context) => VerifyPhoneCode(),
             "phone": (context) => VerifyPhone()
           });
