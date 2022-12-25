@@ -241,13 +241,29 @@ class _HomeState extends State<Home> {
                               fontSize: 18,
                               color: Color.fromRGBO(10, 46, 54, 1)),
                         ),
+                        SizedBox(
+                          width: 20,
+                        ),
                         Text(
                           "10 exercises",
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 18,
                               color: Color.fromRGBO(10, 46, 54, 1)),
-                        )
+                        ),
+                        SizedBox(
+                          width: 70,
+                        ),
+                        CircularPercentIndicator(
+                          radius: 13.0,
+                          circularStrokeCap: CircularStrokeCap.round,
+                          percent: percent / 100,
+                          animation: true,
+                          animateFromLastPercent: true,
+                          lineWidth: 3.2,
+                          backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+                          progressColor: Color.fromRGBO(215, 60, 16, 1),
+                        ),
                       ],
                     ),
                   ),
