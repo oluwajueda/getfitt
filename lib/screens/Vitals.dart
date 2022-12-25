@@ -22,8 +22,12 @@ class _VitalsState extends State<Vitals> {
   late final TextEditingController _bloodSugar;
   late final TextEditingController _bodyTemp;
 
+  CollectionReference users =
+      FirebaseFirestore.instance.collection('vitalsvalues');
+
   @override
   void initState() {
+    super.initState();
     _bloodPressure = TextEditingController();
     _bloodSugar = TextEditingController();
     _bodyTemp = TextEditingController();
@@ -31,6 +35,7 @@ class _VitalsState extends State<Vitals> {
 
   @override
   void dispose() {
+    super.dispose();
     _bloodPressure.dispose();
     _bloodSugar.dispose();
     _bodyTemp.dispose();
@@ -38,6 +43,14 @@ class _VitalsState extends State<Vitals> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> addVitals() {
+      return users.add({
+        "Blood Pressure": _bloodPressure.text,
+        "Blood Sugar": _bloodSugar.text,
+        "Body Temperature": _bodyTemp.text
+      });
+    }
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -201,22 +214,7 @@ class _VitalsState extends State<Vitals> {
                           borderRadius: BorderRadius.circular(10),
                           color: Color.fromRGBO(215, 60, 16, 1)),
                       child: GestureDetector(
-                        onTap: () {
-                          final FirebaseAuth auth = FirebaseAuth.instance;
-
-                          final User? user = auth.currentUser;
-
-                          final uid = user?.email;
-
-                          FirebaseFirestore.instance
-                              .collection("vitalvalues")
-                              .doc(uid)
-                              .set({
-                            "Blood Pressure": _bloodPressure.text,
-                            "Blood Sugar": _bloodSugar.text,
-                            "Body Temperature": _bodyTemp.text
-                          });
-                        },
+                        onTap: addVitals,
                         child: Text(
                           "Save and Continue",
                           style: TextStyle(color: Colors.white),

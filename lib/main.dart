@@ -114,7 +114,7 @@ class MyApp extends StatelessWidget {
           ),
           // ignore: prefer_const_literals_to_create_immutables
           body: TabBarView(children: [
-            FirstVerifyPhone(),
+            Vitals(),
             Home(),
             Home(),
             Home(),
