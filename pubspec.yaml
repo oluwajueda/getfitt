@@ -40,6 +40,7 @@ dependencies:
   intl: ^0.17.0
   email_auth:
   percent_indicator: ^4.2.2
+  pinput: ^2.2.20
 
 int:
   ^0.17.0

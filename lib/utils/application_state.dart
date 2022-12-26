@@ -33,6 +33,8 @@ class ApplicationState extends ChangeNotifier {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
+      await userCredential.user?.sendEmailVerification();
+
       FirebaseFirestore.instance
           .collection("users")
           .doc(userCredential.user?.uid)

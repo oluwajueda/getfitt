@@ -1,20 +1,42 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:getfitts/screens/GetNotification.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
+import 'package:pinput/pinput.dart';
 
 class VerifyPhoneCode extends StatefulWidget {
-  const VerifyPhoneCode({super.key});
+  final String phone;
+
+  const VerifyPhoneCode({super.key, required this.phone});
 
   @override
   State<VerifyPhoneCode> createState() => _VerifyPhoneCodeState();
 }
 
 class _VerifyPhoneCodeState extends State<VerifyPhoneCode> {
+  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
+  String? _verificationCode;
+
+  final TextEditingController _pinPutController = TextEditingController();
+  final defaultPinTheme = PinTheme(
+    width: 56,
+    height: 56,
+    textStyle: TextStyle(
+        fontSize: 20,
+        color: Color.fromRGBO(30, 60, 87, 1),
+        fontWeight: FontWeight.w600),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey),
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldkey,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -44,8 +66,8 @@ class _VerifyPhoneCodeState extends State<VerifyPhoneCode> {
             SizedBox(
               height: 15,
             ),
-            const Text(
-              "We sent a code to your email adebolanle@gmail.com",
+            Text(
+              "We sent a code to your email +234-${widget.phone}",
               style:
                   TextStyle(fontSize: 14, color: Color.fromRGBO(85, 85, 85, 1)),
             ),
@@ -59,21 +81,51 @@ class _VerifyPhoneCodeState extends State<VerifyPhoneCode> {
             SizedBox(
               height: 5,
             ),
-            SizedBox(
-              width: 350,
-              height: 45,
-              child: TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Enter OTP',
-                    hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
-                    filled: true,
-                    fillColor: Color.fromRGBO(245, 245, 245, 1),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.transparent)),
-                    labelStyle: TextStyle(fontSize: 13)),
-              ),
+            // SizedBox(
+            //   width: 350,
+            //   height: 45,
+            //   child: TextFormField(
+            //     decoration: InputDecoration(
+            //         hintText: 'Enter OTP',
+            //         hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
+            //         filled: true,
+            //         fillColor: Color.fromRGBO(245, 245, 245, 1),
+            //         enabledBorder: OutlineInputBorder(
+            //             borderRadius: BorderRadius.circular(10),
+            //             borderSide: BorderSide(color: Colors.transparent)),
+            //         labelStyle: TextStyle(fontSize: 13)),
+            //   ),
+
+            // ),
+
+            Pinput(
+              length: 6,
+              defaultPinTheme: defaultPinTheme,
+              controller: _pinPutController,
+              pinAnimationType: PinAnimationType.fade,
+              onSubmitted: (pin) async {
+                final AuthCredential credential = PhoneAuthProvider.credential(
+                    verificationId: _verificationCode!, smsCode: pin);
+
+                try {
+                  await FirebaseAuth.instance.currentUser
+                      ?.linkWithCredential(credential)
+                      .then((value) async {
+                    if (value.user != null) {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GetNotification()),
+                          (route) => false);
+                    }
+                  });
+                } catch (e) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(e.toString())));
+                }
+              },
             ),
+
             SizedBox(
               height: 15,
             ),
@@ -83,7 +135,7 @@ class _VerifyPhoneCodeState extends State<VerifyPhoneCode> {
                   "Don't get the mail? Check your spam/junk or just resend it"),
             ),
             SizedBox(
-              height: 400,
+              height: 350,
             ),
             SizedBox(
               width: 350,
@@ -110,5 +162,43 @@ class _VerifyPhoneCodeState extends State<VerifyPhoneCode> {
         ),
       ),
     );
+  }
+
+  _verifyPhone() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: '+234-${widget.phone}',
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          await FirebaseAuth.instance
+              .signInWithCredential(credential)
+              .then((value) async {
+            if (value.user != null) {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => GetNotification()),
+                  (route) => false);
+            }
+          });
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          print(e.message);
+        },
+        codeSent: (String? verficationID, int? resendToken) {
+          setState(() {
+            _verificationCode = verficationID;
+          });
+        },
+        codeAutoRetrievalTimeout: (String verificationID) {
+          setState(() {
+            _verificationCode = verificationID;
+          });
+        },
+        timeout: Duration(seconds: 120));
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _verifyPhone();
   }
 }

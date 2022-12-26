@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -70,10 +71,17 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       color: Color.fromRGBO(215, 60, 16, 1)),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => VerifyPhone()));
+                      final user = FirebaseAuth.instance.currentUser;
+                      user?.reload();
+
+                      if (user?.emailVerified ?? false) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VerifyPhone()));
+                      } else {
+                        print('You need to verify your email first');
+                      }
                     },
                     child: Text(
                       "Proceed",

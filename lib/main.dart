@@ -10,6 +10,7 @@ import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/Information.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/Login.dart';
+import 'package:getfitts/screens/OTP.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/screens/VerifyEmail.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
@@ -19,6 +20,7 @@ import 'package:getfitts/screens/Vitals.dart';
 import 'package:getfitts/screens/VitalsPage.dart';
 import 'package:getfitts/screens/VitalsSaved.dart';
 import 'package:getfitts/utils/application_state.dart';
+import 'package:getfitts/utils/sendOTP.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 import 'package:getfitts/screens/FirstVerifyPhone.dart';
@@ -46,10 +48,8 @@ void main() async {
               child = Home();
           }
 
-          return MaterialApp(home: VitalsPage(), routes: {
-            "verify": (context) => VerifyPhoneCode(),
-            "phone": (context) => VerifyPhone()
-          });
+          return MaterialApp(
+              home: child, routes: {"phone": (context) => VerifyPhone()});
         },
       ),
     ),
@@ -86,35 +86,15 @@ class MyApp extends StatelessWidget {
             child: TabBar(indicatorColor: Colors.transparent,
                 // ignore: prefer_const_literals_to_create_immutables
                 tabs: [
-                  Tab(
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.black,
-                    ),
-                  ),
+                  Tab(icon: Image.asset("assets/images/homefitt.png")),
+                  Tab(icon: Image.asset("assets/images/secondIconfitt.png")),
+                  Tab(icon: Image.asset("assets/images/thirdIcon.png")),
+                  Tab(icon: Image.asset("assets/images/4thIcon.png")),
                 ]),
           ),
           // ignore: prefer_const_literals_to_create_immutables
           body: TabBarView(children: [
-            Vitals(),
+            Home(),
             Home(),
             Home(),
             Home(),

@@ -28,6 +28,7 @@ class _LoginState extends State<Login> {
 
   @override
   void dispose() {
+    super.dispose();
     _email.dispose();
     _password.dispose();
   }

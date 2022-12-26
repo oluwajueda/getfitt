@@ -45,9 +45,9 @@ class _VitalsState extends State<Vitals> {
   Widget build(BuildContext context) {
     Future<void> addVitals() {
       return users.add({
-        "Blood Pressure": _bloodPressure.text,
-        "Blood Sugar": _bloodSugar.text,
-        "Body Temperature": _bodyTemp.text
+        "Blood_Pressure": _bloodPressure.text,
+        "Blood_Sugar": _bloodSugar.text,
+        "Body_Temperature": _bodyTemp.text
       });
     }
 

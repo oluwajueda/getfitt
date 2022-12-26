@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructorsimport 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: prefer_const_constructorsimport 'package:firebase_auth/firebase_auth.dart';, avoid_unnecessary_containers, prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -54,7 +54,7 @@ class _SignUpState extends State<SignUp> {
           _email.text, _password.text, _firstName.text, _lastName.text, (e) {});
 
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Information()));
+          context, MaterialPageRoute(builder: (context) => VerifyEmail()));
     } catch (e) {
       print("error");
     }
