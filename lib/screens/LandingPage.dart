@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -36,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
                     fontSize: 48,
                     fontWeight: FontWeight.bold)),
             SizedBox(
-              height: 420,
+              height: 380,
             ),
             Align(
               alignment: Alignment.center,
@@ -51,6 +53,9 @@ class _LandingPageState extends State<LandingPage> {
                       fontWeight: FontWeight.w500),
                 ),
               ),
+            ),
+            SizedBox(
+              height: 15,
             ),
             Container(
                 width: 370,

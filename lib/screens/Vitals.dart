@@ -3,9 +3,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:getfitts/model/vitals.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/provider/vitals.dart';
+import 'package:getfitts/screens/Home.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class Vitals extends StatefulWidget {
   const Vitals({super.key});
@@ -43,12 +47,22 @@ class _VitalsState extends State<Vitals> {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> addVitals() {
-      return users.add({
-        "Blood_Pressure": _bloodPressure.text,
-        "Blood_Sugar": _bloodSugar.text,
-        "Body_Temperature": _bodyTemp.text
-      });
+    addVitals() {
+      // return users.add({
+      //   "Blood_Pressure": _bloodPressure.text,
+      //   "Blood_Sugar": _bloodSugar.text,
+      //   "Body_Temperature": _bodyTemp.text
+      // });
+
+      final vital = Vital(
+          bloodSugar: _bloodSugar.text,
+          bodyTemperature: _bodyTemp.text,
+          id: DateTime.now().toString(),
+          bloodPressure: _bloodPressure.text);
+
+      VitalsProvider provider =
+          Provider.of<VitalsProvider>(context, listen: false);
+      provider.addVitals(vital);
     }
 
     return Scaffold(

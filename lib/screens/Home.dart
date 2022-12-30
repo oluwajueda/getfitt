@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/Vitals.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -203,10 +204,19 @@ class _HomeState extends State<Home> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Record your vitals',
-                        style: TextStyle(
-                            fontSize: 16, color: Color.fromRGBO(51, 51, 51, 1)),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Vitals()));
+                        },
+                        child: Text(
+                          'Record your vitals',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromRGBO(51, 51, 51, 1)),
+                        ),
                       ),
                     )
                   ],

@@ -41,6 +41,7 @@ dependencies:
   email_auth:
   percent_indicator: ^4.2.2
   pinput: ^2.2.20
+  splashscreen: ^1.3.5
 
 int:
   ^0.17.0

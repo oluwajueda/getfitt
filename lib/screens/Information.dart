@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/utils/application_state.dart';
 import 'package:intl/intl.dart';
@@ -318,6 +319,9 @@ class _InformationState extends State<Information> {
                         "hypertensive": firstDrop,
                         "isHypertensionControlled": secondDrop
                       });
+
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home()));
                     },
                     child: Text(
                       "Save and Continue",

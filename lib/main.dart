@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getfitts/TimerScreen.dart';
+import 'package:getfitts/provider/vitals.dart';
 import 'package:getfitts/screens/GetNotification.dart';
 import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/Information.dart';
@@ -29,31 +30,36 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => ApplicationState(),
-      builder: (context, _) => Consumer<ApplicationState>(
-        builder: (context, applicationState, _) {
-          Widget child;
-          switch (applicationState.loginState) {
-            case ApplicationLoginState.loggedOut:
-              child = Login();
-
-              break;
-            case ApplicationLoginState.loggedIn:
-              child = MyApp();
-              break;
-
-            default:
-              child = Home();
-          }
-
-          return MaterialApp(
-              home: child, routes: {"phone": (context) => VerifyPhone()});
-        },
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => VitalsProvider(),
       ),
-    ),
-  );
+      ChangeNotifierProvider(
+        create: (context) => ApplicationState(),
+        builder: (context, _) => Consumer<ApplicationState>(
+          builder: (context, applicationState, _) {
+            Widget child;
+            switch (applicationState.loginState) {
+              case ApplicationLoginState.loggedOut:
+                child = LandingPage();
+
+                break;
+              case ApplicationLoginState.loggedIn:
+                child = MyApp();
+                break;
+
+              default:
+                child = MyApp();
+            }
+
+            return MaterialApp(
+                home: Vitals(), routes: {"phone": (context) => VerifyPhone()});
+          },
+        ),
+      ),
+    ],
+  ));
 }
 
 class MyApp extends StatelessWidget {
