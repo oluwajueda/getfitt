@@ -67,32 +67,29 @@ class _VerifyEmailState extends State<VerifyEmail> {
                 )),
             SizedBox(height: 25),
             SizedBox(
-              width: 350,
-              height: 45,
-              child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color.fromRGBO(215, 60, 16, 1)),
-                  child: GestureDetector(
-                    onTap: () {
-                      final user = FirebaseAuth.instance.currentUser;
-                      user?.reload();
+              width: 370,
+              child: ElevatedButton(
+                onPressed: () {
+                  final user = FirebaseAuth.instance.currentUser;
+                  user?.reload();
 
-                      if (user?.emailVerified ?? false) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VerifyPhone()));
-                      } else {
-                        print('You need to verify your email first');
-                      }
-                    },
-                    child: Text(
-                      "Proceed",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
+                  if (user?.emailVerified ?? false) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => VerifyPhone()));
+                  } else {
+                    print('You need to verify your email first');
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                  textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.transparent)),
+                  padding: EdgeInsets.all(18),
+                ),
+                child: Text("Proceed"),
+              ),
             ),
             SizedBox(
               height: 15,
@@ -100,7 +97,9 @@ class _VerifyEmailState extends State<VerifyEmail> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                  "If you don't see our email in your inbox, please check your spam folder"),
+                "If you don't see our email in your inbox, please check your spam folder",
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+              ),
             )
           ],
         ),

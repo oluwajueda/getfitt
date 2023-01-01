@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/main.dart';
 import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:getfitts/utils/application_state.dart';
@@ -293,41 +294,37 @@ class _InformationState extends State<Information> {
               height: 100,
             ),
             SizedBox(
-              width: 350,
-              height: 45,
-              child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
+              width: 370,
+              child: ElevatedButton(
+                onPressed: () {
+                  final FirebaseAuth auth = FirebaseAuth.instance;
+
+                  final User? user = auth.currentUser;
+
+                  final uid = user?.email;
+
+                  FirebaseFirestore.instance.collection("vitals").doc(uid).set({
+                    "email": uid,
+                    "dateOfBirth": dateInputController.text,
+                    "diabetic": firstDropdownValue,
+                    "isDiabeticControlled": secondDropdownValue,
+                    "hypertensive": firstDrop,
+                    "isHypertensionControlled": secondDrop
+                  });
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyApp()));
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                  textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                  shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color.fromRGBO(215, 60, 16, 1)),
-                  child: GestureDetector(
-                    onTap: () {
-                      final FirebaseAuth auth = FirebaseAuth.instance;
-
-                      final User? user = auth.currentUser;
-
-                      final uid = user?.email;
-
-                      FirebaseFirestore.instance
-                          .collection("vitals")
-                          .doc(uid)
-                          .set({
-                        "email": uid,
-                        "dateOfBirth": dateInputController.text,
-                        "diabetic": firstDropdownValue,
-                        "isDiabeticControlled": secondDropdownValue,
-                        "hypertensive": firstDrop,
-                        "isHypertensionControlled": secondDrop
-                      });
-
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
-                    },
-                    child: Text(
-                      "Save and Continue",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
+                      side: BorderSide(color: Colors.transparent)),
+                  padding: EdgeInsets.all(18),
+                ),
+                child: Text("Proceed"),
+              ),
             ),
           ],
         ),

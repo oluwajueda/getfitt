@@ -57,39 +57,80 @@ class _LandingPageState extends State<LandingPage> {
             SizedBox(
               height: 15,
             ),
-            Container(
-                width: 370,
-                alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromRGBO(245, 245, 245, 1)),
-                child: Text(
-                  "Sign up with google",
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontWeight: FontWeight.w500),
-                )),
+            // Container(
+            //     width: 370,
+            //     alignment: Alignment.center,
+            //     padding: EdgeInsets.symmetric(vertical: 20),
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(10),
+            //         color: Color.fromRGBO(245, 245, 245, 1)),
+            //     child: Text(
+            //       "Sign up with google",
+            //       style: TextStyle(
+            //           color: Color.fromRGBO(0, 0, 0, 1),
+            //           fontWeight: FontWeight.w500),
+            //     )),
+            SizedBox(
+              width: 370,
+              child: ElevatedButton(
+                onPressed: (() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUp()));
+                }),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.transparent)),
+                  padding: EdgeInsets.all(20),
+                ),
+                child: Text("Sign up with google"),
+              ),
+            ),
+
             SizedBox(
               height: 16,
             ),
-            Container(
-                width: 370,
-                alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromRGBO(215, 60, 16, 1)),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignUp()));
-                  },
-                  child: Text(
-                    "Create Account",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )),
+
+            SizedBox(
+              width: 370,
+              child: ElevatedButton(
+                onPressed: (() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUp()));
+                }),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                  textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.transparent)),
+                  padding: EdgeInsets.all(20),
+                ),
+                child: Text("create Account"),
+              ),
+            ),
+
+            // Container(
+            //     width: 370,
+            //     alignment: Alignment.center,
+            //     padding: EdgeInsets.symmetric(vertical: 20),
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(10),
+            //         color: Color.fromRGBO(215, 60, 16, 1)),
+            //     child: GestureDetector(
+            //       onTap: () {
+            //         Navigator.push(context,
+            //             MaterialPageRoute(builder: (context) => SignUp()));
+            //       },
+            //       child: Text(
+            //         "Create Account",
+            //         style: TextStyle(color: Colors.white),
+            //       ),
+            //     )
+            //     ),
           ],
         ),
       ),

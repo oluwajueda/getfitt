@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/main.dart';
 import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:provider/provider.dart';
@@ -143,20 +146,22 @@ class _LoginState extends State<Login> {
                     height: 350,
                   ),
                   SizedBox(
-                    width: 350,
-                    height: 45,
-                    child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                    width: 370,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => MyApp()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                        textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                        shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
-                            color: Color.fromRGBO(215, 60, 16, 1)),
-                        child: GestureDetector(
-                          onTap: login,
-                          child: Text(
-                            "Login",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )),
+                            side: BorderSide(color: Colors.transparent)),
+                        padding: EdgeInsets.all(18),
+                      ),
+                      child: Text("Login"),
+                    ),
                   ),
                   SizedBox(
                     height: 15,

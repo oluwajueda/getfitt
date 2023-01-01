@@ -33,9 +33,6 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
-        create: (context) => VitalsProvider(),
-      ),
-      ChangeNotifierProvider(
         create: (context) => ApplicationState(),
         builder: (context, _) => Consumer<ApplicationState>(
           builder: (context, applicationState, _) {
@@ -54,7 +51,8 @@ void main() async {
             }
 
             return MaterialApp(
-                home: Vitals(), routes: {"phone": (context) => VerifyPhone()});
+                home: GetNotification(),
+                routes: {"phone": (context) => VerifyPhone()});
           },
         ),
       ),

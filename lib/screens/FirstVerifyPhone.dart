@@ -53,25 +53,22 @@ class _FirstVerifyPhoneState extends State<FirstVerifyPhone> {
             ),
             SizedBox(height: 25),
             SizedBox(
-              width: 350,
-              height: 45,
-              child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
+              width: 370,
+              child: ElevatedButton(
+                onPressed: (() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => VerifyPhone()));
+                }),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                  textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                  shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color.fromRGBO(215, 60, 16, 1)),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => VerifyPhone()));
-                    },
-                    child: Text(
-                      "Proceed",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
+                      side: BorderSide(color: Colors.transparent)),
+                  padding: EdgeInsets.all(18),
+                ),
+                child: Text("Continue"),
+              ),
             ),
             SizedBox(
               height: 15,
@@ -79,7 +76,9 @@ class _FirstVerifyPhoneState extends State<FirstVerifyPhone> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                  "You are almost there! just few steps and you are in already"),
+                "You are almost there! just few steps and you are in already!",
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+              ),
             )
           ],
         ),

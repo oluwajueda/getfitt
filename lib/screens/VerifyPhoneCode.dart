@@ -138,25 +138,24 @@ class _VerifyPhoneCodeState extends State<VerifyPhoneCode> {
               height: 350,
             ),
             SizedBox(
-              width: 350,
-              height: 45,
-              child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
+              width: 370,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => GetNotification()));
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                  textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                  shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color.fromRGBO(215, 60, 16, 1)),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GetNotification()));
-                    },
-                    child: Text(
-                      "Proceed",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
+                      side: BorderSide(color: Colors.transparent)),
+                  padding: EdgeInsets.all(18),
+                ),
+                child: Text("Proceed"),
+              ),
             ),
           ],
         ),

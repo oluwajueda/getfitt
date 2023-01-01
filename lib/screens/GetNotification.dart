@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -65,13 +67,13 @@ class _GetNotificationState extends State<GetNotification> {
             Column(
               children: [
                 Row(children: <Widget>[
-                  new Container(
-                    child: new Image.asset('assets/images/mark.png'),
+                  Container(
+                    child: Image.asset('assets/images/mark.png'),
                   ),
                   SizedBox(
                     width: 25,
                   ),
-                  new Container(
+                  Container(
                     child: Text("Your daily exercise is ready"),
                   )
                 ])
@@ -83,13 +85,13 @@ class _GetNotificationState extends State<GetNotification> {
             Column(
               children: [
                 Row(children: <Widget>[
-                  new Container(
-                    child: new Image.asset('assets/images/mark.png'),
+                  Container(
+                    child: Image.asset('assets/images/mark.png'),
                   ),
                   SizedBox(
                     width: 25,
                   ),
-                  new Container(
+                  Container(
                     child: Text("Its time to do your exercise"),
                   )
                 ])
@@ -101,13 +103,13 @@ class _GetNotificationState extends State<GetNotification> {
             Column(
               children: [
                 Row(children: <Widget>[
-                  new Container(
-                    child: new Image.asset('assets/images/mark.png'),
+                  Container(
+                    child: Image.asset('assets/images/mark.png'),
                   ),
                   SizedBox(
                     width: 25,
                   ),
-                  new Container(
+                  Container(
                     child: Text("When you complete your exercise"),
                   )
                 ])
@@ -119,13 +121,13 @@ class _GetNotificationState extends State<GetNotification> {
             Column(
               children: [
                 Row(children: <Widget>[
-                  new Container(
-                    child: new Image.asset('assets/images/mark.png'),
+                  Container(
+                    child: Image.asset('assets/images/mark.png'),
                   ),
                   SizedBox(
                     width: 25,
                   ),
-                  new Container(
+                  Container(
                     child: Text("when you forget to do your exercise"),
                   )
                 ])
@@ -135,25 +137,22 @@ class _GetNotificationState extends State<GetNotification> {
               height: 250,
             ),
             SizedBox(
-              width: 350,
-              height: 45,
-              child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
+              width: 370,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Information()));
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                  textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                  shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color.fromRGBO(215, 60, 16, 1)),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Information()));
-                    },
-                    child: Text(
-                      "Enable Notification",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )),
+                      side: BorderSide(color: Colors.transparent)),
+                  padding: EdgeInsets.all(18),
+                ),
+                child: Text("Proceed"),
+              ),
             ),
             SizedBox(
               height: 15,

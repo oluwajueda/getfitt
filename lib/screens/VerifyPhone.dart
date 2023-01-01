@@ -14,8 +14,35 @@ class VerifyPhone extends StatefulWidget {
   State<VerifyPhone> createState() => _VerifyPhoneState();
 }
 
+@override
 class _VerifyPhoneState extends State<VerifyPhone> {
   final _phoneController = TextEditingController();
+
+  void initState() {
+    super.initState();
+
+    _phoneController.addListener(() {
+      setState(() {
+        submit = _phoneController.text.isNotEmpty;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    super.dispose();
+  }
+
+  proceed() async {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                VerifyPhoneCode(phone: _phoneController.text)));
+  }
+
+  bool submit = false;
 
   @override
   Widget build(BuildContext context) {
@@ -96,26 +123,19 @@ class _VerifyPhoneState extends State<VerifyPhone> {
                 height: 350,
               ),
               SizedBox(
-                width: 350,
-                height: 45,
-                child: Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
+                width: 370,
+                child: ElevatedButton(
+                  onPressed: submit ? () => proceed : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                    textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                    shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color.fromRGBO(215, 60, 16, 1)),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VerifyPhoneCode(
-                                    phone: _phoneController.text)));
-                      },
-                      child: Text(
-                        "Proceed",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    )),
+                        side: BorderSide(color: Colors.transparent)),
+                    padding: EdgeInsets.all(18),
+                  ),
+                  child: Text("Proceed"),
+                ),
               ),
             ],
           ),

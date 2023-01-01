@@ -26,9 +26,6 @@ class _VitalsState extends State<Vitals> {
   late final TextEditingController _bloodSugar;
   late final TextEditingController _bodyTemp;
 
-  CollectionReference users =
-      FirebaseFirestore.instance.collection('vitalsvalues');
-
   @override
   void initState() {
     super.initState();
@@ -47,22 +44,18 @@ class _VitalsState extends State<Vitals> {
 
   @override
   Widget build(BuildContext context) {
-    addVitals() {
-      // return users.add({
-      //   "Blood_Pressure": _bloodPressure.text,
-      //   "Blood_Sugar": _bloodSugar.text,
-      //   "Body_Temperature": _bodyTemp.text
-      // });
+    Future addVitals() async {
+      final vitals = FirebaseFirestore.instance.collection('vitalsign').doc();
 
       final vital = Vital(
+          id: vitals.id,
           bloodSugar: _bloodSugar.text,
-          bodyTemperature: _bodyTemp.text,
-          id: DateTime.now().toString(),
-          bloodPressure: _bloodPressure.text);
+          bloodPressure: _bloodPressure.text,
+          bodyTemp: _bodyTemp.text);
 
-      VitalsProvider provider =
-          Provider.of<VitalsProvider>(context, listen: false);
-      provider.addVitals(vital);
+      final json = vital.toJson();
+
+      await vitals.set(json);
     }
 
     return Scaffold(
@@ -220,20 +213,19 @@ class _VitalsState extends State<Vitals> {
                   height: 230,
                 ),
                 SizedBox(
-                  width: 350,
-                  height: 45,
-                  child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
+                  width: 370,
+                  child: ElevatedButton(
+                    onPressed: addVitals,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                      textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                      shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromRGBO(215, 60, 16, 1)),
-                      child: GestureDetector(
-                        onTap: addVitals,
-                        child: Text(
-                          "Save and Continue",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )),
+                          side: BorderSide(color: Colors.transparent)),
+                      padding: EdgeInsets.all(18),
+                    ),
+                    child: Text("Proceed"),
+                  ),
                 ),
               ],
             ),
