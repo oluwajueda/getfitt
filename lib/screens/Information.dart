@@ -3,14 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:getfitts/main.dart';
-import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/SignUp.dart';
-import 'package:getfitts/utils/application_state.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 class Information extends StatefulWidget {
   const Information({super.key});

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:getfitts/screens/Vitals.dart';
@@ -47,6 +49,29 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    SchedulerBinding.instance.addPostFrameCallback((timestamp) {
+      showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return SizedBox(
+              height: 516,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 151,
+                    height: 151,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/celebrate2.png')),
+                        color: Color.fromRGBO(245, 245, 245, 1),
+                        shape: BoxShape.circle),
+                  ),
+                ],
+              ),
+            );
+          });
+    });
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(

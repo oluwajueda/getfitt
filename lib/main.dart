@@ -4,24 +4,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getfitts/TimerScreen.dart';
-import 'package:getfitts/provider/vitals.dart';
 import 'package:getfitts/screens/GetNotification.dart';
 import 'package:getfitts/screens/Home.dart';
-import 'package:getfitts/screens/Information.dart';
 import 'package:getfitts/screens/LandingPage.dart';
-import 'package:getfitts/screens/Login.dart';
-import 'package:getfitts/screens/OTP.dart';
-import 'package:getfitts/screens/SignUp.dart';
-import 'package:getfitts/screens/VerifyEmail.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:getfitts/screens/VerifyPhoneCode.dart';
-import 'package:getfitts/screens/Vitals.dart';
-import 'package:getfitts/screens/VitalsPage.dart';
-import 'package:getfitts/screens/VitalsSaved.dart';
 import 'package:getfitts/utils/application_state.dart';
-import 'package:getfitts/utils/sendOTP.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 import 'package:getfitts/screens/FirstVerifyPhone.dart';
@@ -51,8 +39,9 @@ void main() async {
             }
 
             return MaterialApp(
-                home: GetNotification(),
-                routes: {"phone": (context) => VerifyPhone()});
+              home: Home(),
+              routes: {"phone": (context) => VerifyPhone()},
+            );
           },
         ),
       ),
