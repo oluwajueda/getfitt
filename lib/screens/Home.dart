@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:async';
+import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -51,23 +52,81 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback((timestamp) {
       showModalBottomSheet(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
           context: context,
           builder: (BuildContext context) {
             return SizedBox(
               height: 516,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 151,
-                    height: 151,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/celebrate2.png')),
-                        color: Color.fromRGBO(245, 245, 245, 1),
-                        shape: BoxShape.circle),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 5, 16, 0),
+                child: Column(
+                  children: [
+                    Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: (() {
+                            Navigator.pop(context);
+                          }),
+                          icon: Icon(Icons.close),
+                        )),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      width: 151,
+                      height: 151,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage('assets/images/celebrate2.png')),
+                          color: Color.fromRGBO(245, 245, 245, 1),
+                          shape: BoxShape.circle),
+                    ),
+                    Text(
+                      'Welcome, Adedeji!',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 24),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "We are happy to see you making moves about your health. We are ready and committed to serve you!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Color.fromRGBO(85, 85, 85, 1), fontSize: 14),
+                    ),
+                    SizedBox(height: 50),
+                    SizedBox(
+                      width: 350,
+                      child: ElevatedButton(
+                        onPressed: (() {
+                          Navigator.pop(context);
+                        }),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                          textStyle:
+                              TextStyle(color: Colors.white, fontSize: 14),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(color: Colors.transparent)),
+                          padding: EdgeInsets.all(18),
+                        ),
+                        child: Text("Thank you!"),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Text(
+                      'Read some benefits of Getfitt App',
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                    )
+                  ],
+                ),
               ),
             );
           });
