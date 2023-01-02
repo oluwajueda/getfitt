@@ -1,17 +1,11 @@
 // ignore_for_file: prefer_const_constructorsimport 'package:firebase_auth/firebase_auth.dart';, avoid_unnecessary_containers, prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:getfitts/screens/Information.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/Login.dart';
 import 'package:getfitts/screens/VerifyEmail.dart';
 import 'package:getfitts/utils/application_state.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:getfitts/service/FirestoreService.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
