@@ -1,10 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:getfitts/screens/SignUp.dart';
-import 'package:getfitts/utils/custom_theme.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
