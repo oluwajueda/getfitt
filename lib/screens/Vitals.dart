@@ -3,8 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:getfitts/model/vitals.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:getfitts/provider/vitals.dart';
 import 'package:getfitts/screens/Home.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
