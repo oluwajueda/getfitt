@@ -42,7 +42,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: VerifyEmail(),
+              home: ExerciseScreen(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },
