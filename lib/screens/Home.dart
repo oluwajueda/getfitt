@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:getfitts/screens/ExerciseInformation.dart';
 import 'package:getfitts/screens/Vitals.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -20,14 +21,16 @@ class _HomeState extends State<Home> {
 
   _startTimer() {
     timer = Timer.periodic(Duration(milliseconds: 6000), (_) {
-      setState(() {
-        percent += 1;
+      // setState(() {
+      //   percent += 1;
 
-        if (percent >= 100) {
-          timer.cancel();
-          percent = 100;
-        }
-      });
+      //   if (percent >= 100) {
+      //     timer.cancel();
+      //     percent = 100;
+      //   }
+      // });
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ExerciseInformation()));
     });
   }
 

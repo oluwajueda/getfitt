@@ -121,7 +121,7 @@ class _LandingPageState extends State<LandingPage> {
             //       onTap: () {
             //         Navigator.push(context,
             //             MaterialPageRoute(builder: (context) => SignUp()));
-            //       },
+            //       },z
             //       child: Text(
             //         "Create Account",
             //         style: TextStyle(color: Colors.white),
