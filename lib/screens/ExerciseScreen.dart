@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/exercise-timer.dart';
+import 'package:getfitts/widgets/round-button.dart';
 
 class ExerciseScreen extends StatefulWidget {
   const ExerciseScreen({super.key});
@@ -10,7 +12,8 @@ class ExerciseScreen extends StatefulWidget {
   State<ExerciseScreen> createState() => _ExerciseScreenState();
 }
 
-class _ExerciseScreenState extends State<ExerciseScreen> {
+class _ExerciseScreenState extends State<ExerciseScreen>
+    with TickerProviderStateMixin {
   final controller = PageController();
   final List<bool> isSelected = <bool>[true, false];
 
@@ -31,9 +34,11 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 40,
+            ),
             Center(
               child: SizedBox(
-                height: 47,
                 child: Container(
                   padding: EdgeInsets.zero,
                   decoration:
@@ -105,6 +110,8 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
 }
 
 Widget firstExercise(BuildContext context) {
+  bool isPlaying = false;
+
   return Column(
     children: [
       Image.asset(
@@ -112,12 +119,16 @@ Widget firstExercise(BuildContext context) {
         scale: 0.84,
       ),
       SizedBox(
-        height: 15,
+        height: 25,
       ),
       Text(
         "Warm up",
         style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
-      )
+      ),
+      SizedBox(
+        height: 15,
+      ),
+      Expanded(child: ExerciseTimer()),
     ],
   );
 }
