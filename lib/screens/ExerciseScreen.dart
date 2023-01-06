@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructo, prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:getfitts/screens/exercise-timer.dart';
 import 'package:getfitts/widgets/round-button.dart';
 
