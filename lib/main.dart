@@ -1,17 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getfitts/screens/ExerciseInformation.dart';
-import 'package:getfitts/screens/ExerciseScreen.dart';
-import 'package:getfitts/screens/GetNotification.dart';
 import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/LandingPage.dart';
-import 'package:getfitts/screens/VerifyEmail.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:getfitts/screens/resting.dart';
 import 'package:getfitts/utils/application_state.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +36,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: ExerciseScreen(),
+              home: Resting(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },

@@ -65,9 +65,7 @@ class _ExerciseTimerState extends State<ExerciseTimer>
                     border: Border.all(color: Colors.black, width: 2),
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(100)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 26, horizontal: 12),
+                child: Center(
                   child: AnimatedBuilder(
                       animation: controller,
                       builder: (context, child) => Text(

@@ -75,7 +75,7 @@ class _ExerciseInformationState extends State<ExerciseInformation> {
                           fontSize: 16),
                     ),
                   )
-                ])
+                ]),
               ],
             ),
             SizedBox(
