@@ -6,7 +6,6 @@ import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:getfitts/screens/VitalsPage.dart';
-import 'package:getfitts/screens/resting.dart';
 import 'package:getfitts/utils/application_state.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
