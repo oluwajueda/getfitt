@@ -32,6 +32,7 @@ class _VerifyPhoneState extends State<VerifyPhone> {
   }
 
   proceed() async {
+    print('hello');
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -122,7 +123,7 @@ class _VerifyPhoneState extends State<VerifyPhone> {
               SizedBox(
                 width: 370,
                 child: ElevatedButton(
-                  onPressed: submit ? () => proceed : null,
+                  onPressed: proceed,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromRGBO(215, 60, 16, 1),
                     textStyle: TextStyle(color: Colors.white, fontSize: 14),

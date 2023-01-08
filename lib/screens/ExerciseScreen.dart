@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructo, prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 import 'package:flutter/material.dart';
 import 'package:getfitts/screens/exercise-timer.dart';
-import 'package:getfitts/widgets/round-button.dart';
+import 'package:getfitts/screens/firstExplainer.dart';
 
 class ExerciseScreen extends StatefulWidget {
   const ExerciseScreen({super.key});
@@ -33,7 +33,7 @@ class _ExerciseScreenState extends State<ExerciseScreen>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 40,
+              height: 60,
             ),
             Center(
               child: SizedBox(
@@ -96,9 +96,7 @@ class _ExerciseScreenState extends State<ExerciseScreen>
                   Container(
                     child: firstExercise(context),
                   ),
-                  Container(
-                    color: Colors.yellow,
-                  ),
+                  Container(child: FirstExplainer()),
                 ],
               ),
             ),
@@ -108,8 +106,6 @@ class _ExerciseScreenState extends State<ExerciseScreen>
 }
 
 Widget firstExercise(BuildContext context) {
-  bool isPlaying = false;
-
   return Column(
     children: [
       Image.asset(

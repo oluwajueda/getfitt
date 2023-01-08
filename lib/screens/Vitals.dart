@@ -43,6 +43,7 @@ class _VitalsState extends State<Vitals> {
 
       final vital = Vital(
           id: vitals.id,
+          createdOn: DateTime.now(),
           bloodSugar: _bloodSugar.text,
           bloodPressure: _bloodPressure.text,
           bodyTemp: _bodyTemp.text);

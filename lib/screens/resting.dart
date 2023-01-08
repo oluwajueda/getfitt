@@ -69,13 +69,16 @@ class _RestingState extends State<Resting> with TickerProviderStateMixin {
       ),
       body: Column(
         children: [
-          Center(
-            child: Container(
-              width: 109,
-              height: 109,
-              decoration: BoxDecoration(
-                  color: Color.fromRGBO(245, 245, 245, 1),
-                  shape: BoxShape.circle),
+          Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: Center(
+              child: Container(
+                width: 99,
+                height: 99,
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(245, 245, 245, 1),
+                    shape: BoxShape.circle),
+              ),
             ),
           ),
           SizedBox(
@@ -91,9 +94,12 @@ class _RestingState extends State<Resting> with TickerProviderStateMixin {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("+20s"),
+              Text(
+                "+20s",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                padding: const EdgeInsets.fromLTRB(14, 8, 14, 8),
                 child: Container(
                   width: 100,
                   height: 100,
@@ -112,9 +118,30 @@ class _RestingState extends State<Resting> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-              Text("skip"),
+              Text(
+                "skip",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
+              SizedBox(
+                height: 15,
+              ),
             ],
-          )
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(12, 0, 10, 12),
+              child: Text(
+                'Up next 2/10',
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
+          Image.asset('assets/images/Rectangle.png'),
         ],
       ),
     );
