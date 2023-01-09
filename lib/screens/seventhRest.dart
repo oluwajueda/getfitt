@@ -11,12 +11,29 @@ class SeventhRest extends StatefulWidget {
   State<SeventhRest> createState() => _SeventhRestState();
 }
 
-class _SeventhRestState extends State<SeventhRest> {
+class _SeventhRestState extends State<SeventhRest>
+    with TickerProviderStateMixin {
   late AnimationController controller;
 
   String get countText {
     Duration count = controller.duration! * controller.value;
     return '${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 20),
+    );
+    controller.reverse(from: controller.value == 0 ? 1.0 : controller.value);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -32,6 +49,138 @@ class _SeventhRestState extends State<SeventhRest> {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 10,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 14),
+              child: Row(
+                children: [
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "1",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "2",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromRGBO(215, 60, 16, 1),
+                        ),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "3",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromRGBO(215, 60, 16, 1),
+                        ),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "4",
+                        style: TextStyle(
+                          fontSize: 20.19,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "5",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "6",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "7",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 50),
             child: Center(

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -177,7 +177,8 @@ class _SeventhScreenState extends State<SeventhScreen> {
                   selectedColor: Colors.white,
                   color: Colors.black,
                   borderColor: Colors.transparent,
-                  children: <Widget>[
+                  // ignore: sort_child_properties_last
+                  children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(5, 8, 20, 8),
                       child: Text(

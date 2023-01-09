@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,6 +20,22 @@ class _FifthRestState extends State<FifthRest> with TickerProviderStateMixin {
   }
 
   @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 20),
+    );
+    controller.reverse(from: controller.value == 0 ? 1.0 : controller.value);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -30,6 +48,136 @@ class _FifthRestState extends State<FifthRest> with TickerProviderStateMixin {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 10,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 14),
+              child: Row(
+                children: [
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "1",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "2",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromRGBO(215, 60, 16, 1),
+                        ),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "3",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromRGBO(215, 60, 16, 1),
+                        ),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "4",
+                        style: TextStyle(
+                          fontSize: 20.19,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Color.fromRGBO(215, 60, 16, 1),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "5",
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "6",
+                        style: TextStyle(fontSize: 20.19, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "7",
+                        style: TextStyle(fontSize: 20.19, color: Colors.black),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 50),
             child: Center(
