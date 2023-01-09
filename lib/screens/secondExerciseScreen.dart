@@ -51,14 +51,12 @@ class _SecondExerciseScreenState extends State<SecondExerciseScreen>
                     decoration: BoxDecoration(
                         border: Border.all(
                             color: Color.fromRGBO(215, 60, 16, 1), width: 1),
-                        color: Colors.white,
+                        color: Color.fromRGBO(215, 60, 16, 1),
                         borderRadius: BorderRadius.circular(100)),
                     child: Center(
                       child: Text(
                         "1",
-                        style: TextStyle(
-                            fontSize: 20.19,
-                            color: Color.fromRGBO(215, 60, 16, 1)),
+                        style: TextStyle(fontSize: 20.19, color: Colors.white),
                       ),
                     ),
                   ),
@@ -69,7 +67,7 @@ class _SecondExerciseScreenState extends State<SecondExerciseScreen>
                     decoration: BoxDecoration(
                         border: Border.all(
                             color: Color.fromRGBO(215, 60, 16, 1), width: 1),
-                        color: Color.fromRGBO(215, 60, 16, 1),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(100)),
                     child: Center(
                       child: Text(

@@ -48,7 +48,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: ExerciseScreen(),
+              home: FourthExerciseScreen(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },
