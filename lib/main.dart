@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:getfitts/provider/exerciseCounter.dart';
+import 'package:getfitts/screens/ExerciseScreen.dart';
 import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
@@ -47,7 +48,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: SixthScreen(),
+              home: ExerciseScreen(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },
