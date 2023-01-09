@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class FifthRest extends StatefulWidget {
-  const FifthRest({super.key});
+class SeventhRest extends StatefulWidget {
+  const SeventhRest({super.key});
 
   @override
-  State<FifthRest> createState() => _FifthRestState();
+  State<SeventhRest> createState() => _SeventhRestState();
 }
 
-class _FifthRestState extends State<FifthRest> with TickerProviderStateMixin {
+class _SeventhRestState extends State<SeventhRest> {
   late AnimationController controller;
 
   String get countText {

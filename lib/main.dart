@@ -6,9 +6,11 @@ import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:getfitts/screens/VitalsPage.dart';
+import 'package:getfitts/screens/fifthExerciseScreen.dart';
 import 'package:getfitts/screens/fourthExerciseScreen.dart';
 import 'package:getfitts/screens/secondExerciseScreen.dart';
 import 'package:getfitts/screens/secondRest.dart';
+import 'package:getfitts/screens/sixthScreen.dart';
 import 'package:getfitts/screens/thirdExerciseScreen.dart';
 import 'package:getfitts/screens/thirdRest.dart';
 import 'package:getfitts/utils/application_state.dart';
@@ -41,7 +43,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: ThirdRest(),
+              home: SixthScreen(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },
