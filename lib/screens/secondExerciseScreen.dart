@@ -1,16 +1,20 @@
-// ignore_for_file: prefer_const_constructo, prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
-import 'package:flutter/material.dart';
-import 'package:getfitts/screens/exercise-timer.dart';
-import 'package:getfitts/screens/firstExplainer.dart';
+// ignore_for_file: sort_child_properties_last, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-class ExerciseScreen extends StatefulWidget {
-  const ExerciseScreen({super.key});
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/ExerciseScreen.dart';
+import 'package:getfitts/screens/exercise-timer.dart';
+
+class SecondExerciseScreen extends StatefulWidget {
+  const SecondExerciseScreen({super.key});
 
   @override
-  State<ExerciseScreen> createState() => _ExerciseScreenState();
+  State<SecondExerciseScreen> createState() => _SecondExerciseScreenState();
 }
 
-class _ExerciseScreenState extends State<ExerciseScreen>
+class _SecondExerciseScreenState extends State<SecondExerciseScreen>
     with TickerProviderStateMixin {
   final controller = PageController();
   final List<bool> isSelected = <bool>[true, false];
@@ -94,9 +98,9 @@ class _ExerciseScreenState extends State<ExerciseScreen>
               physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
-                  child: firstExercise(context),
+                  child: secondExercise(context),
                 ),
-                Container(child: FirstExplainer()),
+                Container(child: Container()),
               ],
             ),
           ),
@@ -106,7 +110,7 @@ class _ExerciseScreenState extends State<ExerciseScreen>
   }
 }
 
-Widget firstExercise(BuildContext context) {
+Widget secondExercise(BuildContext context) {
   return Column(
     children: [
       Image.asset(
@@ -116,9 +120,18 @@ Widget firstExercise(BuildContext context) {
       SizedBox(
         height: 25,
       ),
-      Text(
-        "Warm up",
-        style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Butt Kicks",
+            style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          Image.asset("assets/images/help-circle.png")
+        ],
       ),
       SizedBox(
         height: 15,

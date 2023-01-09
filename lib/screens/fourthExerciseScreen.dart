@@ -1,20 +1,18 @@
-// ignore_for_file: prefer_const_constructo, prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 import 'package:flutter/material.dart';
-import 'package:getfitts/screens/exercise-timer.dart';
-import 'package:getfitts/screens/firstExplainer.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:getfitts/screens/ExerciseScreen.dart';
 
-class ExerciseScreen extends StatefulWidget {
-  const ExerciseScreen({super.key});
+class FourthExerciseScreen extends StatefulWidget {
+  const FourthExerciseScreen({super.key});
 
   @override
-  State<ExerciseScreen> createState() => _ExerciseScreenState();
+  State<FourthExerciseScreen> createState() => _FourthExerciseScreenState();
 }
 
-class _ExerciseScreenState extends State<ExerciseScreen>
-    with TickerProviderStateMixin {
+class _FourthExerciseScreenState extends State<FourthExerciseScreen> {
   final controller = PageController();
   final List<bool> isSelected = <bool>[true, false];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,9 +92,9 @@ class _ExerciseScreenState extends State<ExerciseScreen>
               physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
-                  child: firstExercise(context),
+                  child: fourthExercise(context),
                 ),
-                Container(child: FirstExplainer()),
+                Container(child: Container()),
               ],
             ),
           ),
@@ -106,7 +104,7 @@ class _ExerciseScreenState extends State<ExerciseScreen>
   }
 }
 
-Widget firstExercise(BuildContext context) {
+Widget fourthExercise(BuildContext context) {
   return Column(
     children: [
       Image.asset(
@@ -114,16 +112,91 @@ Widget firstExercise(BuildContext context) {
         scale: 0.84,
       ),
       SizedBox(
-        height: 25,
+        height: 30,
       ),
-      Text(
-        "Warm up",
-        style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Bend Leg Twist",
+            style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          Image.asset("assets/images/help-circle.png")
+        ],
       ),
       SizedBox(
         height: 15,
       ),
-      Expanded(child: ExerciseTimer()),
+      Expanded(
+          child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "prev",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black, width: 1),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100)),
+                      child: Center(
+                          child: Text(
+                        "X12",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 22.26),
+                      ))),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "Next",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          SizedBox(
+            width: 360,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ExerciseScreen()));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromRGBO(215, 60, 16, 1),
+                textStyle: TextStyle(color: Colors.white, fontSize: 14),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                    side: BorderSide(color: Colors.transparent)),
+                padding: EdgeInsets.all(18),
+              ),
+              child: Text("Mark as completed"),
+            ),
+          ),
+        ],
+      )),
     ],
   );
 }
