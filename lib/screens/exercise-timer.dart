@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:getfitts/provider/exerciseCounter.dart';
+import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/resting.dart';
 import 'package:getfitts/widgets/round-button.dart';
 import 'package:provider/provider.dart';
@@ -32,9 +33,6 @@ class _ExerciseTimerState extends State<ExerciseTimer>
     if (countText == "00:00") {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => Resting()));
-      final ExerciseCounter counter =
-          Provider.of<ExerciseCounter>(context, listen: false);
-      counter.increment();
     }
   }
 

@@ -33,7 +33,127 @@ class _ExerciseScreenState extends State<ExerciseScreen>
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            height: 60,
+            height: 10,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 14),
+              child: Row(
+                children: [
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromRGBO(215, 60, 16, 1), width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "1",
+                        style: TextStyle(
+                            fontSize: 20.19,
+                            color: Color.fromRGBO(215, 60, 16, 1)),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "2",
+                        style: TextStyle(fontSize: 20.19, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "3",
+                        style: TextStyle(fontSize: 20.19, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "4",
+                        style: TextStyle(fontSize: 20.19, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "5",
+                        style: TextStyle(fontSize: 20.19, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "6",
+                        style: TextStyle(fontSize: 20.19, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  Container(height: 1, width: 25, color: Colors.black),
+                  Container(
+                    width: 40.38,
+                    height: 40.38,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Center(
+                      child: Text(
+                        "7",
+                        style: TextStyle(fontSize: 20.19, color: Colors.black),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
           ),
           Center(
             child: SizedBox(

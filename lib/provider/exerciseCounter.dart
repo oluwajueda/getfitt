@@ -6,7 +6,7 @@ class ExerciseCounter extends ChangeNotifier {
   double get count => _count;
 
   void increment() {
-    _count = _count + 14.29;
+    _count = _count + 7;
 
     notifyListeners();
   }

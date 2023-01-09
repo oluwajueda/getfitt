@@ -18,7 +18,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int percent = 0;
   late Timer timer;
 
   _startTimer() {
@@ -46,6 +45,11 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     lastDayOfMonth = DateTime(now.year, now.month + 1, 0);
+
+    final ExerciseCounter counter =
+        Provider.of<ExerciseCounter>(context, listen: false);
+    counter.increment();
+    print("hello");
   }
 
   @override
