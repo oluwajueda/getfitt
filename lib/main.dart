@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:getfitts/provider/exerciseCounter.dart';
 import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
@@ -24,6 +25,9 @@ void main() async {
 
   runApp(MultiProvider(
     providers: [
+      ChangeNotifierProvider(
+        create: (context) => ExerciseCounter(),
+      ),
       ChangeNotifierProvider(
         create: (context) => ApplicationState(),
         builder: (context, _) => Consumer<ApplicationState>(
