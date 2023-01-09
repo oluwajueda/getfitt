@@ -12,6 +12,7 @@ import 'package:getfitts/screens/fifthExerciseScreen.dart';
 import 'package:getfitts/screens/fourthExerciseScreen.dart';
 import 'package:getfitts/screens/secondExerciseScreen.dart';
 import 'package:getfitts/screens/secondRest.dart';
+import 'package:getfitts/screens/seventhScreen.dart';
 import 'package:getfitts/screens/sixthScreen.dart';
 import 'package:getfitts/screens/thirdExerciseScreen.dart';
 import 'package:getfitts/screens/thirdRest.dart';
@@ -48,7 +49,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: FifthExerciseScreen(),
+              home: SeventhScreen(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },
