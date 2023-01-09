@@ -10,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:getfitts/screens/VitalsPage.dart';
 import 'package:getfitts/screens/fifthExerciseScreen.dart';
 import 'package:getfitts/screens/fourthExerciseScreen.dart';
+import 'package:getfitts/screens/resting.dart';
 import 'package:getfitts/screens/secondExerciseScreen.dart';
 import 'package:getfitts/screens/secondRest.dart';
 import 'package:getfitts/screens/seventhScreen.dart';
@@ -49,7 +50,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: SeventhScreen(),
+              home: SecondRest(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },
