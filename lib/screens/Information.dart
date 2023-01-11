@@ -131,7 +131,7 @@ class _InformationState extends State<Information> {
                                 BorderRadius.all(Radius.circular(10)))),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
-                          value: firstDropdownValue,
+                          value: firstDropdownValue.toString(),
                           onChanged: (String? newValue) {
                             setState(() {
                               firstDropdownValue = newValue!;
@@ -170,7 +170,7 @@ class _InformationState extends State<Information> {
                                           Radius.circular(10)))),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                    value: secondDropdownValue,
+                                    value: secondDropdownValue.toString(),
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         secondDropdownValue = newValue!;
@@ -218,7 +218,7 @@ class _InformationState extends State<Information> {
                                 BorderRadius.all(Radius.circular(10)))),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
-                          value: firstDrop,
+                          value: firstDrop.toString(),
                           onChanged: (String? newValue) {
                             setState(() {
                               firstDrop = newValue!;
@@ -257,7 +257,7 @@ class _InformationState extends State<Information> {
                                           Radius.circular(10)))),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                    value: secondDrop,
+                                    value: secondDrop.toString(),
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         secondDrop = newValue!;
@@ -301,10 +301,10 @@ class _InformationState extends State<Information> {
                   FirebaseFirestore.instance.collection("vitals").doc(uid).set({
                     "email": uid,
                     "dateOfBirth": dateInputController.text,
-                    "diabetic": firstDropdownValue,
-                    "isDiabeticControlled": secondDropdownValue,
-                    "hypertensive": firstDrop,
-                    "isHypertensionControlled": secondDrop
+                    "diabetic": firstDropdownValue.toString(),
+                    "isDiabeticControlled": secondDropdownValue.toString(),
+                    "hypertensive": firstDrop.toString(),
+                    "isHypertensionControlled": secondDrop.toString()
                   });
 
                   Navigator.push(context,
@@ -318,7 +318,7 @@ class _InformationState extends State<Information> {
                       side: BorderSide(color: Colors.transparent)),
                   padding: EdgeInsets.all(18),
                 ),
-                child: Text("Proceed"),
+                child: Text("Save and continue"),
               ),
             ),
           ],

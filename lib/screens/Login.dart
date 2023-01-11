@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:getfitts/main.dart';
 import 'package:getfitts/screens/Home.dart';
+import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:provider/provider.dart';
 import 'package:getfitts/utils/application_state.dart';
@@ -40,7 +41,7 @@ class _LoginState extends State<Login> {
           Provider.of<ApplicationState>(context, listen: false);
       applicationState.signIn(_email.text, _password.text, (e) {});
 
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
     } catch (e) {}
   }
 

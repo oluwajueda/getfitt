@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:getfitts/provider/exerciseCounter.dart';
+import 'package:getfitts/provider/userHealth.dart';
 import 'package:getfitts/screens/ExerciseScreen.dart';
 import 'package:getfitts/screens/HealthyUserPage.dart';
 import 'package:getfitts/screens/Home.dart';
+import 'package:getfitts/screens/Information.dart';
 import 'package:getfitts/screens/LandingPage.dart';
 import 'package:getfitts/screens/VerifyPhone.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,6 +24,7 @@ import 'package:getfitts/screens/sixthRest.dart';
 import 'package:getfitts/screens/sixthScreen.dart';
 import 'package:getfitts/screens/thirdExerciseScreen.dart';
 import 'package:getfitts/screens/thirdRest.dart';
+import 'package:getfitts/screens/unHealthyPage.dart';
 import 'package:getfitts/utils/application_state.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +38,9 @@ void main() async {
     providers: [
       ChangeNotifierProvider(
         create: (context) => ExerciseCounter(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => UserHealthStatus(),
       ),
       ChangeNotifierProvider(
         create: (context) => ApplicationState(),
@@ -55,7 +61,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: HealthyUser(),
+              home: Information(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },
