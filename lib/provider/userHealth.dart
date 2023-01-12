@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
-class UserHealthStatus extends ChangeNotifier {
-  bool _isHypertensionControlled = true;
+class UserHealthStat extends ChangeNotifier {
+  bool isHypertensionControlled = true;
 
-  bool get isHypertensionControlled => _isHypertensionControlled;
+  bool get isHypertensionControl => isHypertensionControlled;
 
   void notControlled() {
-    _isHypertensionControlled = false;
+    bool isHypertensionControlled = false;
 
     notifyListeners();
   }

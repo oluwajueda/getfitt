@@ -4,8 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:getfitts/main.dart';
+import 'package:getfitts/provider/userHealth.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class Information extends StatefulWidget {
   const Information({super.key});
@@ -32,6 +34,19 @@ class _InformationState extends State<Information> {
     dateInputController.dispose();
 
     super.dispose();
+  }
+
+  void goToMyApp(String secondDropdownValue, String secondDrop) {
+    bool healthy = true;
+
+    if (secondDropdownValue == "No") {
+      healthy = false;
+    }
+    if (secondDrop == "No") {
+      healthy = false;
+    } else {
+      healthy = true;
+    }
   }
 
   @override
@@ -170,11 +185,18 @@ class _InformationState extends State<Information> {
                                           Radius.circular(10)))),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                    value: secondDropdownValue.toString(),
+                                    value: secondDropdownValue,
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         secondDropdownValue = newValue!;
                                       });
+
+                                      UserHealthStat userHealth =
+                                          Provider.of<UserHealthStat>(context,
+                                              listen: false);
+                                      if (secondDropdownValue == "No") {
+                                        userHealth.notControlled();
+                                      }
                                     },
                                     items: <String>['No', 'Yes']
                                         .map<DropdownMenuItem<String>>(
@@ -242,7 +264,7 @@ class _InformationState extends State<Information> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Is your hypertensive controlled',
+                            'Is your hypertension controlled',
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w500),
                           ),
@@ -257,11 +279,18 @@ class _InformationState extends State<Information> {
                                           Radius.circular(10)))),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                    value: secondDrop.toString(),
+                                    value: secondDrop,
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         secondDrop = newValue!;
                                       });
+
+                                      UserHealthStat userHealth =
+                                          Provider.of<UserHealthStat>(context,
+                                              listen: false);
+                                      if (secondDrop == "No") {
+                                        userHealth.notControlled();
+                                      }
                                     },
                                     items: <String>['No', 'Yes']
                                         .map<DropdownMenuItem<String>>(
@@ -306,6 +335,8 @@ class _InformationState extends State<Information> {
                     "hypertensive": firstDrop.toString(),
                     "isHypertensionControlled": secondDrop.toString()
                   });
+
+                  goToMyApp(secondDropdownValue, secondDrop);
 
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MyApp()));

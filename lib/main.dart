@@ -40,7 +40,7 @@ void main() async {
         create: (context) => ExerciseCounter(),
       ),
       ChangeNotifierProvider(
-        create: (context) => UserHealthStatus(),
+        create: (context) => UserHealthStat(),
       ),
       ChangeNotifierProvider(
         create: (context) => ApplicationState(),
