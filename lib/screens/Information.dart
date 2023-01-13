@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:getfitts/main.dart';
 import 'package:getfitts/provider/userHealth.dart';
+import 'package:getfitts/screens/HealthyUserPage.dart';
+import 'package:getfitts/screens/Home.dart';
 import 'package:getfitts/screens/SignUp.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -37,16 +39,26 @@ class _InformationState extends State<Information> {
   }
 
   void goToMyApp(String secondDropdownValue, String secondDrop) {
-    bool healthy = true;
+    UserHealthStat healthy =
+        Provider.of<UserHealthStat>(context, listen: false);
 
+    bool healthyState = healthy.isHypertensionControl;
     if (secondDropdownValue == "No") {
-      healthy = false;
+      healthyState = true;
     }
     if (secondDrop == "No") {
-      healthy = false;
+      healthyState = true;
     } else {
-      healthy = true;
+      healthyState = false;
     }
+
+    //   Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //           builder: (context) => Home(
+    //                 health: healthy,
+    //               )));
+    // }
   }
 
   @override
@@ -146,7 +158,7 @@ class _InformationState extends State<Information> {
                                 BorderRadius.all(Radius.circular(10)))),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
-                          value: firstDropdownValue.toString(),
+                          value: firstDropdownValue,
                           onChanged: (String? newValue) {
                             setState(() {
                               firstDropdownValue = newValue!;
@@ -240,7 +252,7 @@ class _InformationState extends State<Information> {
                                 BorderRadius.all(Radius.circular(10)))),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
-                          value: firstDrop.toString(),
+                          value: firstDrop,
                           onChanged: (String? newValue) {
                             setState(() {
                               firstDrop = newValue!;
@@ -330,10 +342,10 @@ class _InformationState extends State<Information> {
                   FirebaseFirestore.instance.collection("vitals").doc(uid).set({
                     "email": uid,
                     "dateOfBirth": dateInputController.text,
-                    "diabetic": firstDropdownValue.toString(),
-                    "isDiabeticControlled": secondDropdownValue.toString(),
-                    "hypertensive": firstDrop.toString(),
-                    "isHypertensionControlled": secondDrop.toString()
+                    "diabetic": firstDropdownValue,
+                    "isDiabeticControlled": secondDropdownValue,
+                    "hypertensive": firstDrop,
+                    "isHypertensionControlled": secondDrop
                   });
 
                   goToMyApp(secondDropdownValue, secondDrop);

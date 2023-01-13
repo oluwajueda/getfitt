@@ -61,7 +61,7 @@ void main() async {
             }
 
             return MaterialApp(
-              home: Information(),
+              home: LandingPage(),
               routes: {"phone": (context) => VerifyPhone()},
             );
           },

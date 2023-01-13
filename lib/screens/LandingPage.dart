@@ -28,12 +28,15 @@ class _LandingPageState extends State<LandingPage> {
             SizedBox(
               height: 58,
             ),
-            Text("getfitt.",
-                style: TextStyle(
-                    decoration: TextDecoration.none,
-                    color: Color.fromRGBO(215, 60, 16, 1),
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold)),
+            Padding(
+              padding: const EdgeInsets.only(left: 5),
+              child: Text("getfitt.",
+                  style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Color.fromRGBO(215, 60, 16, 1),
+                      fontSize: 52,
+                      fontWeight: FontWeight.bold)),
+            ),
             SizedBox(
               height: 380,
             ),
